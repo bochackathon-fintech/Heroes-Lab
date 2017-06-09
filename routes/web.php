@@ -23,6 +23,9 @@ Route::get('webhook', function () {
     $botman = app('botman');
     $botman->verifyServices('Benqsiemens1231231231231!');
 
+    $botman->hears('hello', function ($bot) {
+        $bot->reply('Hello World');
+    });
 //// give the bot something to listen for.
 //    $botman->hears('hello', function (BotMan $bot) {
 //        $bot->reply('Hello yourself.');
@@ -31,3 +34,5 @@ Route::get('webhook', function () {
 //// start listening
 //    $botman->listen();
 });
+
+
