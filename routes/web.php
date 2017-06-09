@@ -11,10 +11,23 @@
 |
 */
 
+use Mpociot\BotMan\BotMan;
+use Mpociot\BotMan\BotManFactory;
+use Mpociot\BotMan\Cache\RedisCache;
+
 Route::get('/', function () {
     return view('welcome');
 });
 
 Route::get('webhook', function () {
-    return response('success');
+    $botman = app('botman');
+    $botman->verifyServices('Bemqsiemens123123123123!');
+
+// give the bot something to listen for.
+    $botman->hears('hello', function (BotMan $bot) {
+        $bot->reply('Hello yourself.');
+    });
+
+// start listening
+    $botman->listen();
 });
