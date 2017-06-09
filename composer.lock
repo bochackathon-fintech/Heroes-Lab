@@ -4,8 +4,321 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "96098e473b028cdb2529580554a1ae3e",
+    "content-hash": "b64e073a95d0fdc51c0ace7841cc01cd",
     "packages": [
+        {
+            "name": "barryvdh/laravel-ide-helper",
+            "version": "v2.3.2",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/barryvdh/laravel-ide-helper.git",
+                "reference": "e82de98cef0d6597b1b686be0b5813a3a4bb53c5"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/barryvdh/laravel-ide-helper/zipball/e82de98cef0d6597b1b686be0b5813a3a4bb53c5",
+                "reference": "e82de98cef0d6597b1b686be0b5813a3a4bb53c5",
+                "shasum": ""
+            },
+            "require": {
+                "barryvdh/reflection-docblock": "^2.0.4",
+                "illuminate/console": "^5.0,<5.5",
+                "illuminate/filesystem": "^5.0,<5.5",
+                "illuminate/support": "^5.0,<5.5",
+                "php": ">=5.4.0",
+                "symfony/class-loader": "^2.3|^3.0"
+            },
+            "require-dev": {
+                "doctrine/dbal": "~2.3",
+                "phpunit/phpunit": "4.*",
+                "scrutinizer/ocular": "~1.1",
+                "squizlabs/php_codesniffer": "~2.3"
+            },
+            "suggest": {
+                "doctrine/dbal": "Load information from the database about models for phpdocs (~2.3)"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "2.3-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Barryvdh\\LaravelIdeHelper\\": "src"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Barry vd. Heuvel",
+                    "email": "barryvdh@gmail.com"
+                }
+            ],
+            "description": "Laravel IDE Helper, generates correct PHPDocs for all Facade classes, to improve auto-completion.",
+            "keywords": [
+                "autocomplete",
+                "codeintel",
+                "helper",
+                "ide",
+                "laravel",
+                "netbeans",
+                "phpdoc",
+                "phpstorm",
+                "sublime"
+            ],
+            "time": "2017-02-22T12:27:33+00:00"
+        },
+        {
+            "name": "barryvdh/reflection-docblock",
+            "version": "v2.0.4",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/barryvdh/ReflectionDocBlock.git",
+                "reference": "3dcbd98b5d9384a5357266efba8fd29884458e5c"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/barryvdh/ReflectionDocBlock/zipball/3dcbd98b5d9384a5357266efba8fd29884458e5c",
+                "reference": "3dcbd98b5d9384a5357266efba8fd29884458e5c",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.3.3"
+            },
+            "require-dev": {
+                "phpunit/phpunit": "~4.0,<4.5"
+            },
+            "suggest": {
+                "dflydev/markdown": "~1.0",
+                "erusev/parsedown": "~1.0"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "2.0.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-0": {
+                    "Barryvdh": [
+                        "src/"
+                    ]
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Mike van Riel",
+                    "email": "mike.vanriel@naenius.com"
+                }
+            ],
+            "time": "2016-06-13T19:28:20+00:00"
+        },
+        {
+            "name": "clue/stdio-react",
+            "version": "v1.0.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/clue/php-stdio-react.git",
+                "reference": "c307fc7ab581c9494606d09c9243833bcf65e8c9"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/clue/php-stdio-react/zipball/c307fc7ab581c9494606d09c9243833bcf65e8c9",
+                "reference": "c307fc7ab581c9494606d09c9243833bcf65e8c9",
+                "shasum": ""
+            },
+            "require": {
+                "clue/term-react": "^0.1.1",
+                "clue/utf8-react": "^0.1",
+                "php": ">=5.3",
+                "react/event-loop": "0.3.*|0.4.*",
+                "react/stream": "^0.4.2"
+            },
+            "require-dev": {
+                "clue/arguments": "^2.0",
+                "clue/commander": "^1.2"
+            },
+            "suggest": {
+                "ext-mbstring": "Using ext-mbstring should provide slightly better performance for handling I/O"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Clue\\React\\Stdio\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Christian Lück",
+                    "email": "christian@lueck.tv"
+                }
+            ],
+            "description": "Async, event-driven console input & output (STDIN, STDOUT), built on top of React PHP",
+            "homepage": "https://github.com/clue/php-stdio-react",
+            "keywords": [
+                "async",
+                "autocomplete",
+                "autocompletion",
+                "history",
+                "reactphp",
+                "readline",
+                "stdin",
+                "stdio",
+                "stdout"
+            ],
+            "time": "2017-01-08T15:46:37+00:00"
+        },
+        {
+            "name": "clue/term-react",
+            "version": "v0.1.3",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/clue/php-term-react.git",
+                "reference": "a45e0af4769465305f2e9a25dd3bf4d4161a7aa3"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/clue/php-term-react/zipball/a45e0af4769465305f2e9a25dd3bf4d4161a7aa3",
+                "reference": "a45e0af4769465305f2e9a25dd3bf4d4161a7aa3",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.3",
+                "react/stream": "^0.6 || ^0.5 || ^0.4 || ^0.3"
+            },
+            "require-dev": {
+                "phpunit/phpunit": "^5.0 || ^4.8",
+                "react/event-loop": "^0.4 || ^0.3",
+                "react/stream": "^0.6"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Clue\\React\\Term\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Christian Lück",
+                    "email": "christian@lueck.tv"
+                }
+            ],
+            "description": "Streaming terminal emulator, built on top of React PHP",
+            "homepage": "https://github.com/clue/php-term-react",
+            "keywords": [
+                "C0",
+                "CSI",
+                "ansi",
+                "apc",
+                "ascii",
+                "c1",
+                "control codes",
+                "dps",
+                "osc",
+                "pm",
+                "reactphp",
+                "streaming",
+                "terminal",
+                "vt100",
+                "xterm"
+            ],
+            "time": "2017-04-06T16:58:43+00:00"
+        },
+        {
+            "name": "clue/utf8-react",
+            "version": "v0.1.2",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/clue/php-utf8-react.git",
+                "reference": "a91d00fa7864fda692377621f90bbd5ec1f8bc73"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/clue/php-utf8-react/zipball/a91d00fa7864fda692377621f90bbd5ec1f8bc73",
+                "reference": "a91d00fa7864fda692377621f90bbd5ec1f8bc73",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.3",
+                "react/stream": "^0.6 || ^0.5 || ^0.4 || ^0.3"
+            },
+            "require-dev": {
+                "phpunit/phpunit": "^5.0 || ^4.8"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Clue\\React\\Utf8\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Christian Lück",
+                    "email": "christian@lueck.tv"
+                }
+            ],
+            "description": "Streaming UTF-8 parser for React PHP",
+            "homepage": "https://github.com/clue/php-utf8-react",
+            "keywords": [
+                "reactphp",
+                "streaming",
+                "unicode",
+                "utf-8",
+                "utf8"
+            ],
+            "time": "2017-04-07T17:51:09+00:00"
+        },
+        {
+            "name": "container-interop/container-interop",
+            "version": "1.2.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/container-interop/container-interop.git",
+                "reference": "79cbf1341c22ec75643d841642dd5d6acd83bdb8"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/container-interop/container-interop/zipball/79cbf1341c22ec75643d841642dd5d6acd83bdb8",
+                "reference": "79cbf1341c22ec75643d841642dd5d6acd83bdb8",
+                "shasum": ""
+            },
+            "require": {
+                "psr/container": "^1.0"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Interop\\Container\\": "src/Interop/Container/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "description": "Promoting the interoperability of container objects (DIC, SL, etc.)",
+            "homepage": "https://github.com/container-interop/container-interop",
+            "time": "2017-02-14T19:40:03+00:00"
+        },
         {
             "name": "dnoegel/php-xdg-base-dir",
             "version": "0.1",
@@ -147,6 +460,230 @@
                 "parser"
             ],
             "time": "2017-03-29T16:04:15+00:00"
+        },
+        {
+            "name": "evenement/evenement",
+            "version": "v2.0.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/igorw/evenement.git",
+                "reference": "f6e843799fd4f4184d54d8fc7b5b3551c9fa803e"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/igorw/evenement/zipball/f6e843799fd4f4184d54d8fc7b5b3551c9fa803e",
+                "reference": "f6e843799fd4f4184d54d8fc7b5b3551c9fa803e",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.4.0"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "2.0-dev"
+                }
+            },
+            "autoload": {
+                "psr-0": {
+                    "Evenement": "src"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Igor Wiedler",
+                    "email": "igor@wiedler.ch",
+                    "homepage": "http://wiedler.ch/igor/"
+                }
+            ],
+            "description": "Événement is a very simple event dispatching library for PHP",
+            "keywords": [
+                "event-dispatcher",
+                "event-emitter"
+            ],
+            "time": "2012-11-02T14:49:47+00:00"
+        },
+        {
+            "name": "guzzlehttp/guzzle",
+            "version": "6.2.3",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/guzzle/guzzle.git",
+                "reference": "8d6c6cc55186db87b7dc5009827429ba4e9dc006"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/guzzle/guzzle/zipball/8d6c6cc55186db87b7dc5009827429ba4e9dc006",
+                "reference": "8d6c6cc55186db87b7dc5009827429ba4e9dc006",
+                "shasum": ""
+            },
+            "require": {
+                "guzzlehttp/promises": "^1.0",
+                "guzzlehttp/psr7": "^1.4",
+                "php": ">=5.5"
+            },
+            "require-dev": {
+                "ext-curl": "*",
+                "phpunit/phpunit": "^4.0",
+                "psr/log": "^1.0"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "6.2-dev"
+                }
+            },
+            "autoload": {
+                "files": [
+                    "src/functions_include.php"
+                ],
+                "psr-4": {
+                    "GuzzleHttp\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Michael Dowling",
+                    "email": "mtdowling@gmail.com",
+                    "homepage": "https://github.com/mtdowling"
+                }
+            ],
+            "description": "Guzzle is a PHP HTTP client library",
+            "homepage": "http://guzzlephp.org/",
+            "keywords": [
+                "client",
+                "curl",
+                "framework",
+                "http",
+                "http client",
+                "rest",
+                "web service"
+            ],
+            "time": "2017-02-28T22:50:30+00:00"
+        },
+        {
+            "name": "guzzlehttp/promises",
+            "version": "v1.3.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/guzzle/promises.git",
+                "reference": "a59da6cf61d80060647ff4d3eb2c03a2bc694646"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/guzzle/promises/zipball/a59da6cf61d80060647ff4d3eb2c03a2bc694646",
+                "reference": "a59da6cf61d80060647ff4d3eb2c03a2bc694646",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.5.0"
+            },
+            "require-dev": {
+                "phpunit/phpunit": "^4.0"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.4-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "GuzzleHttp\\Promise\\": "src/"
+                },
+                "files": [
+                    "src/functions_include.php"
+                ]
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Michael Dowling",
+                    "email": "mtdowling@gmail.com",
+                    "homepage": "https://github.com/mtdowling"
+                }
+            ],
+            "description": "Guzzle promises library",
+            "keywords": [
+                "promise"
+            ],
+            "time": "2016-12-20T10:07:11+00:00"
+        },
+        {
+            "name": "guzzlehttp/psr7",
+            "version": "1.4.2",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/guzzle/psr7.git",
+                "reference": "f5b8a8512e2b58b0071a7280e39f14f72e05d87c"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/guzzle/psr7/zipball/f5b8a8512e2b58b0071a7280e39f14f72e05d87c",
+                "reference": "f5b8a8512e2b58b0071a7280e39f14f72e05d87c",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.4.0",
+                "psr/http-message": "~1.0"
+            },
+            "provide": {
+                "psr/http-message-implementation": "1.0"
+            },
+            "require-dev": {
+                "phpunit/phpunit": "~4.0"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.4-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "GuzzleHttp\\Psr7\\": "src/"
+                },
+                "files": [
+                    "src/functions_include.php"
+                ]
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Michael Dowling",
+                    "email": "mtdowling@gmail.com",
+                    "homepage": "https://github.com/mtdowling"
+                },
+                {
+                    "name": "Tobias Schultze",
+                    "homepage": "https://github.com/Tobion"
+                }
+            ],
+            "description": "PSR-7 message implementation that also provides common utility methods",
+            "keywords": [
+                "http",
+                "message",
+                "request",
+                "response",
+                "stream",
+                "uri",
+                "url"
+            ],
+            "time": "2017-03-20T17:10:46+00:00"
         },
         {
             "name": "jakub-onderka/php-console-color",
@@ -589,6 +1126,212 @@
             "time": "2017-03-13T07:08:03+00:00"
         },
         {
+            "name": "mpociot/botman",
+            "version": "1.5.7",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/mpociot/botman.git",
+                "reference": "225a687a42ee0e90673ffcd9117c977a004c5488"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/mpociot/botman/zipball/225a687a42ee0e90673ffcd9117c977a004c5488",
+                "reference": "225a687a42ee0e90673ffcd9117c977a004c5488",
+                "shasum": ""
+            },
+            "require": {
+                "opis/closure": "^2.3",
+                "php": ">=5.6.0",
+                "symfony/http-foundation": "2.8.*|3.0.*|3.1.*|3.2.*|3.3.*",
+                "tightenco/collect": "~5.0"
+            },
+            "require-dev": {
+                "codeigniter/framework": "~3.0",
+                "doctrine/cache": "^1.6",
+                "ext-curl": "*",
+                "illuminate/support": "~5.0",
+                "mockery/mockery": "dev-master",
+                "mpociot/slack-client": "^0.2.6",
+                "orchestra/testbench": "~3.0",
+                "phpunit/phpunit": "~5.0",
+                "sllh/php-cs-fixer-styleci-bridge": "^2.1",
+                "symfony/cache": "^3.1"
+            },
+            "suggest": {
+                "doctrine/cache": "Use any Doctrine cache driver for cache",
+                "mpociot/slack-client": "Use the Slack RTM API with BotMan",
+                "symfony/cache": "Use any Symfony cache driver for cache"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-0": {
+                    "Mpociot\\BotMan": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Marcel Pociot",
+                    "email": "m.pociot@gmail.com"
+                }
+            ],
+            "description": "Create messaging bots in PHP with ease.",
+            "homepage": "http://github.com/mpociot/botman",
+            "keywords": [
+                "Botman",
+                "bot",
+                "facebook messenger",
+                "laravel",
+                "nexmo",
+                "skype",
+                "slack",
+                "telegram"
+            ],
+            "time": "2017-05-30T11:51:05+00:00"
+        },
+        {
+            "name": "mpociot/botman-tinker",
+            "version": "0.1.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/mpociot/botman-tinker.git",
+                "reference": "7aea32759e7280f28fe573be4d73dd183a356d01"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/mpociot/botman-tinker/zipball/7aea32759e7280f28fe573be4d73dd183a356d01",
+                "reference": "7aea32759e7280f28fe573be4d73dd183a356d01",
+                "shasum": ""
+            },
+            "require": {
+                "clue/stdio-react": "^1.0",
+                "illuminate/support": "~5.0",
+                "mpociot/botman": "^1.4",
+                "mpociot/slack-client": "^0.2.6",
+                "php": ">=5.6.0"
+            },
+            "require-dev": {
+                "orchestra/testbench": "~3.0",
+                "phpunit/phpunit": "~5.0"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Mpociot\\BotManTinker\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Marcel Pociot",
+                    "email": "m.pociot@gmail.com"
+                }
+            ],
+            "description": "BotMan tinker command for your Laravel BotMan project",
+            "homepage": "http://github.com/mpociot/botman-tinker",
+            "keywords": [
+                "Botman",
+                "Tinker",
+                "bot",
+                "laravel"
+            ],
+            "time": "2017-04-03T15:32:21+00:00"
+        },
+        {
+            "name": "mpociot/phpws",
+            "version": "1.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/mpociot/phpws.git",
+                "reference": "8854ea3daca17099de0fe943fb16f932138daa1d"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/mpociot/phpws/zipball/8854ea3daca17099de0fe943fb16f932138daa1d",
+                "reference": "8854ea3daca17099de0fe943fb16f932138daa1d",
+                "shasum": ""
+            },
+            "require": {
+                "react/socket": "0.4.*",
+                "react/socket-client": "0.4.*",
+                "react/stream": "0.4.*",
+                "zendframework/zend-http": "2.*",
+                "zendframework/zend-log": "2.*"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-0": {
+                    "Devristo\\Phpws\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "authors": [
+                {
+                    "name": "Devristo",
+                    "email": "chris@devristo.com"
+                }
+            ],
+            "description": "WebSocket Server and Client library for PHP",
+            "time": "2016-12-16T08:50:24+00:00"
+        },
+        {
+            "name": "mpociot/slack-client",
+            "version": "0.2.10",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/mpociot/slack-client.git",
+                "reference": "906d97977cde771020bcaeee956c06cd1589ecaa"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/mpociot/slack-client/zipball/906d97977cde771020bcaeee956c06cd1589ecaa",
+                "reference": "906d97977cde771020bcaeee956c06cd1589ecaa",
+                "shasum": ""
+            },
+            "require": {
+                "evenement/evenement": "2.0.*",
+                "guzzlehttp/guzzle": "~6.0",
+                "mpociot/phpws": "~1.1",
+                "php": ">=5.5",
+                "react/event-loop": "^0.4.1",
+                "react/promise": "^2.2"
+            },
+            "require-dev": {
+                "apigen/apigen": "^4.1",
+                "fzaninotto/faker": "~1.4",
+                "phpunit/phpunit": "~4.6"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Slack\\": "src"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Stephen Coakley",
+                    "email": "me@stephencoakley.com"
+                }
+            ],
+            "description": "A better Slack client, with RTM API support",
+            "keywords": [
+                "api",
+                "realtime",
+                "slack"
+            ],
+            "time": "2017-04-02T18:32:39+00:00"
+        },
+        {
             "name": "mtdowling/cron-expression",
             "version": "v1.2.0",
             "source": {
@@ -737,6 +1480,60 @@
             "time": "2017-03-05T18:23:57+00:00"
         },
         {
+            "name": "opis/closure",
+            "version": "2.4.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/opis/closure.git",
+                "reference": "ceee85c76bcd1fcc13e14a7579c481d533dfafbe"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/opis/closure/zipball/ceee85c76bcd1fcc13e14a7579c481d533dfafbe",
+                "reference": "ceee85c76bcd1fcc13e14a7579c481d533dfafbe",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.3.0"
+            },
+            "require-dev": {
+                "jeremeamia/superclosure": "^2.0",
+                "phpunit/phpunit": "3.7.*"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "2.4.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Opis\\Closure\\": "lib/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Marius Sarca",
+                    "email": "marius.sarca@gmail.com"
+                }
+            ],
+            "description": "A library for PHP 5.3+ that can be used to serialize closures (anonymous functions).",
+            "homepage": "http://www.opis.io/closure",
+            "keywords": [
+                "anonymous functions",
+                "closure",
+                "function",
+                "serializable",
+                "serialization",
+                "serialize"
+            ],
+            "time": "2017-04-13T08:14:00+00:00"
+        },
+        {
             "name": "paragonie/random_compat",
             "version": "v2.0.10",
             "source": {
@@ -783,6 +1580,105 @@
                 "random"
             ],
             "time": "2017-03-13T16:27:32+00:00"
+        },
+        {
+            "name": "psr/container",
+            "version": "1.0.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/php-fig/container.git",
+                "reference": "b7ce3b176482dbbc1245ebf52b181af44c2cf55f"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/php-fig/container/zipball/b7ce3b176482dbbc1245ebf52b181af44c2cf55f",
+                "reference": "b7ce3b176482dbbc1245ebf52b181af44c2cf55f",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.3.0"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.0.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Psr\\Container\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "PHP-FIG",
+                    "homepage": "http://www.php-fig.org/"
+                }
+            ],
+            "description": "Common Container Interface (PHP FIG PSR-11)",
+            "homepage": "https://github.com/php-fig/container",
+            "keywords": [
+                "PSR-11",
+                "container",
+                "container-interface",
+                "container-interop",
+                "psr"
+            ],
+            "time": "2017-02-14T16:28:37+00:00"
+        },
+        {
+            "name": "psr/http-message",
+            "version": "1.0.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/php-fig/http-message.git",
+                "reference": "f6561bf28d520154e4b0ec72be95418abe6d9363"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/php-fig/http-message/zipball/f6561bf28d520154e4b0ec72be95418abe6d9363",
+                "reference": "f6561bf28d520154e4b0ec72be95418abe6d9363",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.3.0"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.0.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Psr\\Http\\Message\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "PHP-FIG",
+                    "homepage": "http://www.php-fig.org/"
+                }
+            ],
+            "description": "Common interface for HTTP messages",
+            "homepage": "https://github.com/php-fig/http-message",
+            "keywords": [
+                "http",
+                "http-message",
+                "psr",
+                "psr-7",
+                "request",
+                "response"
+            ],
+            "time": "2016-08-06T14:39:51+00:00"
         },
         {
             "name": "psr/log",
@@ -987,6 +1883,348 @@
             "time": "2017-03-26T20:37:53+00:00"
         },
         {
+            "name": "react/cache",
+            "version": "v0.4.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/reactphp/cache.git",
+                "reference": "558f614891341b1d817a8cdf9a358948ec49638f"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/reactphp/cache/zipball/558f614891341b1d817a8cdf9a358948ec49638f",
+                "reference": "558f614891341b1d817a8cdf9a358948ec49638f",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.3.0",
+                "react/promise": "~2.0|~1.1"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "React\\Cache\\": "src\\"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "description": "Async caching.",
+            "keywords": [
+                "cache"
+            ],
+            "time": "2016-02-25T18:17:16+00:00"
+        },
+        {
+            "name": "react/dns",
+            "version": "v0.4.9",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/reactphp/dns.git",
+                "reference": "288b4f36972cdc2f81dae1d1a58a0467e3f625cb"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/reactphp/dns/zipball/288b4f36972cdc2f81dae1d1a58a0467e3f625cb",
+                "reference": "288b4f36972cdc2f81dae1d1a58a0467e3f625cb",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.3.0",
+                "react/cache": "~0.4.0|~0.3.0",
+                "react/promise": "~2.1|~1.2",
+                "react/promise-timer": "~1.1",
+                "react/socket": "^1.0 || ^0.8 || ^0.7 || ^0.6 || ^0.5 || ^0.4.4",
+                "react/stream": "^1.0 || ^0.7 || ^0.6 || ^0.5 || ^0.4.5"
+            },
+            "require-dev": {
+                "phpunit/phpunit": "^5.0 || ^4.8.10"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "React\\Dns\\": "src"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "description": "Async DNS resolver for ReactPHP",
+            "keywords": [
+                "dns",
+                "dns-resolver"
+            ],
+            "time": "2017-05-01T17:21:03+00:00"
+        },
+        {
+            "name": "react/event-loop",
+            "version": "v0.4.3",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/reactphp/event-loop.git",
+                "reference": "8bde03488ee897dc6bb3d91e4e17c353f9c5252f"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/reactphp/event-loop/zipball/8bde03488ee897dc6bb3d91e4e17c353f9c5252f",
+                "reference": "8bde03488ee897dc6bb3d91e4e17c353f9c5252f",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.4.0"
+            },
+            "require-dev": {
+                "phpunit/phpunit": "~4.8"
+            },
+            "suggest": {
+                "ext-event": "~1.0",
+                "ext-libev": "*",
+                "ext-libevent": ">=0.1.0"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "React\\EventLoop\\": "src"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "description": "Event loop abstraction layer that libraries can use for evented I/O.",
+            "keywords": [
+                "asynchronous",
+                "event-loop"
+            ],
+            "time": "2017-04-27T10:56:23+00:00"
+        },
+        {
+            "name": "react/promise",
+            "version": "v2.5.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/reactphp/promise.git",
+                "reference": "62785ae604c8d69725d693eb370e1d67e94c4053"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/reactphp/promise/zipball/62785ae604c8d69725d693eb370e1d67e94c4053",
+                "reference": "62785ae604c8d69725d693eb370e1d67e94c4053",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.4.0"
+            },
+            "require-dev": {
+                "phpunit/phpunit": "~4.8"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "React\\Promise\\": "src/"
+                },
+                "files": [
+                    "src/functions_include.php"
+                ]
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Jan Sorgalla",
+                    "email": "jsorgalla@gmail.com"
+                }
+            ],
+            "description": "A lightweight implementation of CommonJS Promises/A for PHP",
+            "keywords": [
+                "promise",
+                "promises"
+            ],
+            "time": "2017-03-25T12:08:31+00:00"
+        },
+        {
+            "name": "react/promise-timer",
+            "version": "v1.1.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/reactphp/promise-timer.git",
+                "reference": "ddedc67bfd7f579fc83e66ff67e3564b179297dd"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/reactphp/promise-timer/zipball/ddedc67bfd7f579fc83e66ff67e3564b179297dd",
+                "reference": "ddedc67bfd7f579fc83e66ff67e3564b179297dd",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.3",
+                "react/event-loop": "~0.4.0|~0.3.0",
+                "react/promise": "~2.1|~1.2"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "React\\Promise\\Timer\\": "src/"
+                },
+                "files": [
+                    "src/functions.php"
+                ]
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Christian Lück",
+                    "email": "christian@lueck.tv"
+                }
+            ],
+            "description": "Trivial timeout implementation for Promises",
+            "homepage": "https://github.com/react/promise-timer",
+            "keywords": [
+                "async",
+                "event-loop",
+                "promise",
+                "reactphp",
+                "timeout",
+                "timer"
+            ],
+            "time": "2016-12-27T08:12:19+00:00"
+        },
+        {
+            "name": "react/socket",
+            "version": "v0.4.6",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/reactphp/socket.git",
+                "reference": "cf074e53c974df52388ebd09710a9018894745d2"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/reactphp/socket/zipball/cf074e53c974df52388ebd09710a9018894745d2",
+                "reference": "cf074e53c974df52388ebd09710a9018894745d2",
+                "shasum": ""
+            },
+            "require": {
+                "evenement/evenement": "~2.0|~1.0",
+                "php": ">=5.3.0",
+                "react/event-loop": "0.4.*|0.3.*",
+                "react/promise": "^2.0 || ^1.1",
+                "react/stream": "^0.4.5"
+            },
+            "require-dev": {
+                "clue/block-react": "^1.1",
+                "phpunit/phpunit": "~4.8",
+                "react/socket-client": "^0.5.1"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "React\\Socket\\": "src"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "description": "Async, streaming plaintext TCP/IP and secure TLS socket server for React PHP",
+            "keywords": [
+                "Socket"
+            ],
+            "time": "2017-01-26T09:23:38+00:00"
+        },
+        {
+            "name": "react/socket-client",
+            "version": "v0.4.6",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/reactphp/socket-client.git",
+                "reference": "49e730523b73d912e56f7a41f53ed3fc083ae167"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/reactphp/socket-client/zipball/49e730523b73d912e56f7a41f53ed3fc083ae167",
+                "reference": "49e730523b73d912e56f7a41f53ed3fc083ae167",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.4.0",
+                "react/dns": "0.4.*",
+                "react/event-loop": "0.4.*",
+                "react/promise": "~2.0",
+                "react/stream": "0.4.*"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "0.4-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "React\\SocketClient\\": "src"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "description": "Async connector to open TCP/IP and SSL/TLS based connections.",
+            "keywords": [
+                "Socket"
+            ],
+            "time": "2016-12-06T10:54:49+00:00"
+        },
+        {
+            "name": "react/stream",
+            "version": "v0.4.6",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/reactphp/stream.git",
+                "reference": "44dc7f51ea48624110136b535b9ba44fd7d0c1ee"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/reactphp/stream/zipball/44dc7f51ea48624110136b535b9ba44fd7d0c1ee",
+                "reference": "44dc7f51ea48624110136b535b9ba44fd7d0c1ee",
+                "shasum": ""
+            },
+            "require": {
+                "evenement/evenement": "^2.0|^1.0",
+                "php": ">=5.3.8"
+            },
+            "require-dev": {
+                "clue/stream-filter": "~1.2",
+                "react/event-loop": "^0.4|^0.3",
+                "react/promise": "^2.0|^1.0"
+            },
+            "suggest": {
+                "react/event-loop": "^0.4",
+                "react/promise": "^2.0"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "React\\Stream\\": "src"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "description": "Basic readable and writable stream interfaces that support piping.",
+            "keywords": [
+                "pipe",
+                "stream"
+            ],
+            "time": "2017-01-25T14:44:14+00:00"
+        },
+        {
             "name": "swiftmailer/swiftmailer",
             "version": "v5.4.8",
             "source": {
@@ -1039,6 +2277,62 @@
                 "mailer"
             ],
             "time": "2017-05-01T15:54:03+00:00"
+        },
+        {
+            "name": "symfony/class-loader",
+            "version": "v3.3.2",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/symfony/class-loader.git",
+                "reference": "386a294d621576302e7cc36965d6ed53b8c73c4f"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/symfony/class-loader/zipball/386a294d621576302e7cc36965d6ed53b8c73c4f",
+                "reference": "386a294d621576302e7cc36965d6ed53b8c73c4f",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.5.9"
+            },
+            "require-dev": {
+                "symfony/finder": "~2.8|~3.0",
+                "symfony/polyfill-apcu": "~1.1"
+            },
+            "suggest": {
+                "symfony/polyfill-apcu": "For using ApcClassLoader on HHVM"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "3.3-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Symfony\\Component\\ClassLoader\\": ""
+                },
+                "exclude-from-classmap": [
+                    "/Tests/"
+                ]
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Fabien Potencier",
+                    "email": "fabien@symfony.com"
+                },
+                {
+                    "name": "Symfony Community",
+                    "homepage": "https://symfony.com/contributors"
+                }
+            ],
+            "description": "Symfony ClassLoader Component",
+            "homepage": "https://symfony.com",
+            "time": "2017-06-02T09:51:43+00:00"
         },
         {
             "name": "symfony/console",
@@ -1884,6 +3178,441 @@
                 "environment"
             ],
             "time": "2016-09-01T10:05:43+00:00"
+        },
+        {
+            "name": "zendframework/zend-escaper",
+            "version": "2.5.2",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/zendframework/zend-escaper.git",
+                "reference": "2dcd14b61a72d8b8e27d579c6344e12c26141d4e"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/zendframework/zend-escaper/zipball/2dcd14b61a72d8b8e27d579c6344e12c26141d4e",
+                "reference": "2dcd14b61a72d8b8e27d579c6344e12c26141d4e",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.5"
+            },
+            "require-dev": {
+                "fabpot/php-cs-fixer": "1.7.*",
+                "phpunit/phpunit": "~4.0"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "2.5-dev",
+                    "dev-develop": "2.6-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Zend\\Escaper\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "BSD-3-Clause"
+            ],
+            "homepage": "https://github.com/zendframework/zend-escaper",
+            "keywords": [
+                "escaper",
+                "zf2"
+            ],
+            "time": "2016-06-30T19:48:38+00:00"
+        },
+        {
+            "name": "zendframework/zend-http",
+            "version": "2.6.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/zendframework/zend-http.git",
+                "reference": "09f4d279f46d86be63171ff62ee0f79eca878678"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/zendframework/zend-http/zipball/09f4d279f46d86be63171ff62ee0f79eca878678",
+                "reference": "09f4d279f46d86be63171ff62ee0f79eca878678",
+                "shasum": ""
+            },
+            "require": {
+                "php": "^5.5 || ^7.0",
+                "zendframework/zend-loader": "^2.5",
+                "zendframework/zend-stdlib": "^2.5 || ^3.0",
+                "zendframework/zend-uri": "^2.5",
+                "zendframework/zend-validator": "^2.5"
+            },
+            "require-dev": {
+                "phpunit/phpunit": "^4.0",
+                "zendframework/zend-coding-standard": "~1.0.0",
+                "zendframework/zend-config": "^2.5"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "2.6-dev",
+                    "dev-develop": "2.7-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Zend\\Http\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "BSD-3-Clause"
+            ],
+            "description": "provides an easy interface for performing Hyper-Text Transfer Protocol (HTTP) requests",
+            "homepage": "https://github.com/zendframework/zend-http",
+            "keywords": [
+                "http",
+                "zf2"
+            ],
+            "time": "2017-01-31T14:41:02+00:00"
+        },
+        {
+            "name": "zendframework/zend-loader",
+            "version": "2.5.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/zendframework/zend-loader.git",
+                "reference": "c5fd2f071bde071f4363def7dea8dec7393e135c"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/zendframework/zend-loader/zipball/c5fd2f071bde071f4363def7dea8dec7393e135c",
+                "reference": "c5fd2f071bde071f4363def7dea8dec7393e135c",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.3.23"
+            },
+            "require-dev": {
+                "fabpot/php-cs-fixer": "1.7.*",
+                "phpunit/phpunit": "~4.0"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "2.5-dev",
+                    "dev-develop": "2.6-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Zend\\Loader\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "BSD-3-Clause"
+            ],
+            "homepage": "https://github.com/zendframework/zend-loader",
+            "keywords": [
+                "loader",
+                "zf2"
+            ],
+            "time": "2015-06-03T14:05:47+00:00"
+        },
+        {
+            "name": "zendframework/zend-log",
+            "version": "2.9.2",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/zendframework/zend-log.git",
+                "reference": "bf7489578d092d6ff7508117d1d920a4764fbd6a"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/zendframework/zend-log/zipball/bf7489578d092d6ff7508117d1d920a4764fbd6a",
+                "reference": "bf7489578d092d6ff7508117d1d920a4764fbd6a",
+                "shasum": ""
+            },
+            "require": {
+                "php": "^5.6 || ^7.0",
+                "psr/log": "^1.0",
+                "zendframework/zend-servicemanager": "^2.7.5 || ^3.0.3",
+                "zendframework/zend-stdlib": "^2.7 || ^3.0"
+            },
+            "provide": {
+                "psr/log-implementation": "1.0.0"
+            },
+            "require-dev": {
+                "mikey179/vfsstream": "^1.6",
+                "phpunit/phpunit": "^5.7.15 || ^6.0.8",
+                "zendframework/zend-coding-standard": "~1.0.0",
+                "zendframework/zend-db": "^2.6",
+                "zendframework/zend-escaper": "^2.5",
+                "zendframework/zend-filter": "^2.5",
+                "zendframework/zend-mail": "^2.6.1",
+                "zendframework/zend-validator": "^2.6"
+            },
+            "suggest": {
+                "ext-mongo": "mongo extension to use Mongo writer",
+                "ext-mongodb": "mongodb extension to use MongoDB writer",
+                "zendframework/zend-console": "Zend\\Console component to use the RequestID log processor",
+                "zendframework/zend-db": "Zend\\Db component to use the database log writer",
+                "zendframework/zend-escaper": "Zend\\Escaper component, for use in the XML log formatter",
+                "zendframework/zend-mail": "Zend\\Mail component to use the email log writer",
+                "zendframework/zend-validator": "Zend\\Validator component to block invalid log messages"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "2.9-dev",
+                    "dev-develop": "2.10-dev"
+                },
+                "zf": {
+                    "component": "Zend\\Log",
+                    "config-provider": "Zend\\Log\\ConfigProvider"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Zend\\Log\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "BSD-3-Clause"
+            ],
+            "description": "component for general purpose logging",
+            "homepage": "https://github.com/zendframework/zend-log",
+            "keywords": [
+                "log",
+                "logging",
+                "zf2"
+            ],
+            "time": "2017-05-17T16:03:26+00:00"
+        },
+        {
+            "name": "zendframework/zend-servicemanager",
+            "version": "3.3.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/zendframework/zend-servicemanager.git",
+                "reference": "c3036efb81f71bfa36cc9962ee5d4474f36581d0"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/zendframework/zend-servicemanager/zipball/c3036efb81f71bfa36cc9962ee5d4474f36581d0",
+                "reference": "c3036efb81f71bfa36cc9962ee5d4474f36581d0",
+                "shasum": ""
+            },
+            "require": {
+                "container-interop/container-interop": "^1.2",
+                "php": "^5.6 || ^7.0",
+                "psr/container": "^1.0",
+                "zendframework/zend-stdlib": "^3.1"
+            },
+            "provide": {
+                "container-interop/container-interop-implementation": "^1.2",
+                "psr/container-implementation": "^1.0"
+            },
+            "require-dev": {
+                "mikey179/vfsstream": "^1.6",
+                "ocramius/proxy-manager": "^1.0 || ^2.0",
+                "phpbench/phpbench": "^0.10.0",
+                "phpunit/phpunit": "^5.7 || ^6.0.6",
+                "zendframework/zend-coding-standard": "~1.0.0"
+            },
+            "suggest": {
+                "ocramius/proxy-manager": "ProxyManager 1.* to handle lazy initialization of services",
+                "zendframework/zend-stdlib": "zend-stdlib ^2.5 if you wish to use the MergeReplaceKey or MergeRemoveKey features in Config instances"
+            },
+            "bin": [
+                "bin/generate-deps-for-config-factory",
+                "bin/generate-factory-for-class"
+            ],
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "3.3-dev",
+                    "dev-develop": "3.4-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Zend\\ServiceManager\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "BSD-3-Clause"
+            ],
+            "homepage": "https://github.com/zendframework/zend-servicemanager",
+            "keywords": [
+                "service-manager",
+                "servicemanager",
+                "zf"
+            ],
+            "time": "2017-03-01T22:08:02+00:00"
+        },
+        {
+            "name": "zendframework/zend-stdlib",
+            "version": "3.1.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/zendframework/zend-stdlib.git",
+                "reference": "debedcfc373a293f9250cc9aa03cf121428c8e78"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/zendframework/zend-stdlib/zipball/debedcfc373a293f9250cc9aa03cf121428c8e78",
+                "reference": "debedcfc373a293f9250cc9aa03cf121428c8e78",
+                "shasum": ""
+            },
+            "require": {
+                "php": "^5.6 || ^7.0"
+            },
+            "require-dev": {
+                "athletic/athletic": "~0.1",
+                "phpunit/phpunit": "~4.0",
+                "squizlabs/php_codesniffer": "^2.6.2"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "3.1-dev",
+                    "dev-develop": "3.2-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Zend\\Stdlib\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "BSD-3-Clause"
+            ],
+            "homepage": "https://github.com/zendframework/zend-stdlib",
+            "keywords": [
+                "stdlib",
+                "zf2"
+            ],
+            "time": "2016-09-13T14:38:50+00:00"
+        },
+        {
+            "name": "zendframework/zend-uri",
+            "version": "2.5.2",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/zendframework/zend-uri.git",
+                "reference": "0bf717a239432b1a1675ae314f7c4acd742749ed"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/zendframework/zend-uri/zipball/0bf717a239432b1a1675ae314f7c4acd742749ed",
+                "reference": "0bf717a239432b1a1675ae314f7c4acd742749ed",
+                "shasum": ""
+            },
+            "require": {
+                "php": "^5.5 || ^7.0",
+                "zendframework/zend-escaper": "^2.5",
+                "zendframework/zend-validator": "^2.5"
+            },
+            "require-dev": {
+                "fabpot/php-cs-fixer": "1.7.*",
+                "phpunit/phpunit": "~4.0"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "2.5-dev",
+                    "dev-develop": "2.6-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Zend\\Uri\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "BSD-3-Clause"
+            ],
+            "description": "a component that aids in manipulating and validating » Uniform Resource Identifiers (URIs)",
+            "homepage": "https://github.com/zendframework/zend-uri",
+            "keywords": [
+                "uri",
+                "zf2"
+            ],
+            "time": "2016-02-17T22:38:51+00:00"
+        },
+        {
+            "name": "zendframework/zend-validator",
+            "version": "2.9.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/zendframework/zend-validator.git",
+                "reference": "c9a8160a0191e34bb98ac1ecd4e453391c424bb3"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/zendframework/zend-validator/zipball/c9a8160a0191e34bb98ac1ecd4e453391c424bb3",
+                "reference": "c9a8160a0191e34bb98ac1ecd4e453391c424bb3",
+                "shasum": ""
+            },
+            "require": {
+                "container-interop/container-interop": "^1.1",
+                "php": "^5.6 || ^7.0",
+                "zendframework/zend-stdlib": "^2.7.6 || ^3.1"
+            },
+            "require-dev": {
+                "phpunit/phpunit": "^6.0.8 || ^5.7.15",
+                "zendframework/zend-cache": "^2.6.1",
+                "zendframework/zend-coding-standard": "~1.0.0",
+                "zendframework/zend-config": "^2.6",
+                "zendframework/zend-db": "^2.7",
+                "zendframework/zend-filter": "^2.6",
+                "zendframework/zend-http": "^2.5.4",
+                "zendframework/zend-i18n": "^2.6",
+                "zendframework/zend-math": "^2.6",
+                "zendframework/zend-servicemanager": "^2.7.5 || ^3.0.3",
+                "zendframework/zend-session": "^2.6.2",
+                "zendframework/zend-uri": "^2.5"
+            },
+            "suggest": {
+                "zendframework/zend-db": "Zend\\Db component, required by the (No)RecordExists validator",
+                "zendframework/zend-filter": "Zend\\Filter component, required by the Digits validator",
+                "zendframework/zend-i18n": "Zend\\I18n component to allow translation of validation error messages",
+                "zendframework/zend-i18n-resources": "Translations of validator messages",
+                "zendframework/zend-math": "Zend\\Math component, required by the Csrf validator",
+                "zendframework/zend-servicemanager": "Zend\\ServiceManager component to allow using the ValidatorPluginManager and validator chains",
+                "zendframework/zend-session": "Zend\\Session component, required by the Csrf validator",
+                "zendframework/zend-uri": "Zend\\Uri component, required by the Uri and Sitemap\\Loc validators"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "2.9-dev",
+                    "dev-develop": "2.10-dev"
+                },
+                "zf": {
+                    "component": "Zend\\Validator",
+                    "config-provider": "Zend\\Validator\\ConfigProvider"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Zend\\Validator\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "BSD-3-Clause"
+            ],
+            "description": "provides a set of commonly needed validators",
+            "homepage": "https://github.com/zendframework/zend-validator",
+            "keywords": [
+                "validator",
+                "zf2"
+            ],
+            "time": "2017-05-17T22:06:13+00:00"
         }
     ],
     "packages-dev": [

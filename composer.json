@@ -9,8 +9,12 @@
   "type": "project",
   "require": {
     "php": ">=5.6.4",
+    "barryvdh/laravel-ide-helper": "^2.3",
     "laravel/framework": "5.4.*",
-    "laravel/tinker": "~1.0"
+    "laravel/tinker": "~1.0",
+    "mpociot/botman": "~1.0",
+    "mpociot/botman-tinker": "^0.1.1",
+    "mpociot/slack-client": "^0.2.6"
   },
   "require-dev": {
     "fzaninotto/faker": "~1.4",
@@ -43,6 +47,8 @@
     ],
     "post-update-cmd": [
       "Illuminate\\Foundation\\ComposerScripts::postUpdate",
+      "php artisan ide-helper:generate",
+      "php artisan ide-helper:meta",
       "php artisan optimize"
     ]
   },
