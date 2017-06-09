@@ -46,7 +46,35 @@ return [
         'slack_token' => env('SLACK_TOKEN'),
         'telegram_token' => env('TELEGRAM_TOKEN'),
         'facebook_token' => env('FACEBOOK_TOKEN'),
-        'facebook_app_secret' => env('FACEBOOK_SECRET')
+        'facebook_app_secret' => env('FACEBOOK_SECRET'),
+        'facebook_start_button_payload' => 'START_CONVERSATION',
+        'facebook_persistent_menu'      => [
+            'persistent_menu' => [
+                [
+                    'locale'                  => 'default',
+                    'composer_input_disabled' => 'true',
+                    'call_to_actions'         => [
+                        [
+                            'title'           => 'My Account',
+                            'type'            => 'nested',
+                            'call_to_actions' => [
+                                [
+                                    'title'   => 'Pay Bill',
+                                    'type'    => 'postback',
+                                    'payload' => 'PAYBILL_PAYLOAD',
+                                ],
+                            ],
+                        ],
+                        [
+                            'type'                 => 'web_url',
+                            'title'                => 'Latest News',
+                            'url'                  => env('APP_URL'),
+                            'webview_height_ratio' => 'full',
+                        ],
+                    ],
+                ],
+            ],
+        ],
     ],
 
 ];
