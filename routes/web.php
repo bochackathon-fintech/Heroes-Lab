@@ -21,7 +21,7 @@ Route::get('/', function () {
 
 Route::get('webhook', function () {
     $botman = app('botman');
-    return $botman->verifyServices('Bemqsiemens123123123123!');
+    $botman->verifyServices('Bemqsiemens123123123123!');
 
 //// give the bot something to listen for.
 //    $botman->hears('hello', function (BotMan $bot) {
