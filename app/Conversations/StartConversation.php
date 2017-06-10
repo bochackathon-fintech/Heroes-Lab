@@ -69,7 +69,7 @@ class StartConversation extends Conversation
                                         Button::create('Yes')->value('Y'),
                                         Button::create('No')->value('N')
                                     ]);
-                                return ($this->ask($summary, function (Answer $answer) use ($question, $balance, $interledger) {
+                                $this->ask($summary, function (Answer $answer) use ($question, $balance, $interledger) {
                                     if ($answer->isInteractiveMessageReply()) {
                                         if ($answer->getValue() == 'Y') {
                                             $this->ask('Give me your password?', function (Answer $answer) use ($question, $balance, $interledger) {
@@ -89,7 +89,7 @@ class StartConversation extends Conversation
                                         }
                                     }
 
-                                }));
+                                });
                             });
                         });
                         break;
