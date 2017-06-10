@@ -85,7 +85,7 @@ class BotManController extends Controller
         ]);
 
 
-        print_r(json_decode($response->getBody(), true));
+        print_r(json_decode($response, true));
     }
 
 
