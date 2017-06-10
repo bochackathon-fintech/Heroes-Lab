@@ -58,7 +58,11 @@ class BotManController extends Controller
             'json' => $credentialsArr
         ]);
 
-        print_r($response->json());
+
+
+
+
+        print_r(json_decode($response->getHeader('Set-Cookie'), true));
     }
 
     public function knock()
