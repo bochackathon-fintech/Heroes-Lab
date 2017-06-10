@@ -20,3 +20,5 @@ Route::get('webhook', 'AuthorizationController@verify');
 Route::any('knock', 'BotManController@knock');
 Route::any('getCookie', 'BotManController@getCookie');
 
+Route::any('createuser','BotManController@createUser');
+
