@@ -53,7 +53,7 @@ class StartConversation extends Conversation
                                 $this->say($checkbalance['message']);
                                 $this->repeat($question);
                             }
-                            $balance = $answer->get(Text());
+                            $balance = $answer->getText();
                             $this->ask('provide interledger address', function (Answer $answer) use ($interledger, $checkbalance, $question) {
                                 $checkinterledger = TransferMoney::checkInterledger($answer->getText());
                                 if (!$checkinterledger['status']) {
