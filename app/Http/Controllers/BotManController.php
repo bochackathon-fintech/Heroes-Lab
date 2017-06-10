@@ -58,8 +58,7 @@ class BotManController extends Controller
             'json' => $credentialsArr
         ]);
 
-        print_r('hello');
-        // print_r($response->json());
+        print_r($response->json());
     }
 
     public function knock()
