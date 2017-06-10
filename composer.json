@@ -15,7 +15,8 @@
     "laravel/tinker": "~1.0",
     "mpociot/botman": "~1.0",
     "mpociot/botman-tinker": "^0.1.1",
-    "mpociot/slack-client": "^0.2.6"
+    "mpociot/slack-client": "^0.2.6",
+    "treffynnon/navigator": "1.1.0"
   },
   "require-dev": {
     "fzaninotto/faker": "~1.4",
