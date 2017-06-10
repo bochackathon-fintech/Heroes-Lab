@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use app\Conversations\ExampleConversation;
+use App\Conversations\ExampleConversation;
 use Mpociot\BotMan\BotMan;
 
 class BotManController extends Controller
