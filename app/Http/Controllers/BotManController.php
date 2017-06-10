@@ -47,7 +47,8 @@ class BotManController extends Controller
 
     public function getCookie() {
         $client = new GuzzleHttp\Client(['base_uri' => 'https://usdledger.online/api/auth/login', array(
-            'content-type' => 'application/json'
+            'content-type' => 'application/json',
+            'set-cookie' =>  
         )]);
 
         $credentialsArr = array(
@@ -89,7 +90,8 @@ class BotManController extends Controller
             'json' => $accountArr
         ]);
 
-
+        echo $response;
+        exit;
         print_r(json_decode($response->getBody(), true));
     }
 
