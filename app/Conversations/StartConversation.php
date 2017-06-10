@@ -63,7 +63,7 @@ class StartConversation extends Conversation
                                     ->callbackId('transaction_answer')
                                     ->addButton(ElementButton::create('Food')->value('Food'))
                                     ->addButton(ElementButton::create('Other')->value('Other'));
-                           $this->ask($summary, function (Answer $answer) use ($question, $balance, $interledger) {
+                            $this->ask($occasion, function (Answer $answer) use ($question, $balance, $interledger, $checkbalance) {
                                if ($answer->isInteractiveMessageReply()) {
                                     $addCategory = TransferMoney::createCategory($answer->getValue());
                                     if (!$addCategory['status']) {
