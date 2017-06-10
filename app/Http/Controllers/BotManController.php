@@ -29,21 +29,30 @@ class BotManController extends Controller
 
         //user clicked get started button
         $botman->hears(config('services.botman.facebook_start_button_payload'), function (BotMan $bot) {
-            $bot->startConversation(new StartConversation());
+            $bot->firstTimeConversation(new firstTimeConversation);
         })->middleware(new EnrichMessage());
 
         //list to user
         $botman->listen();
     }
 
+    public function firstTimeConversation(BotMan $bot) {
+        $bot->firstTimeConversation(new firstTimeConversation);
+
+    }
+
     /**
      * Loaded through routes/botman.php
      * @param  BotMan $bot
      */
+
     public function startConversation(BotMan $bot)
     {
         $bot->startConversation(new StartConversation());
     }
+
+
+
 
     public function getCookie() {
         $client = new GuzzleHttp\Client(['base_uri' => 'https://usdledger.online/api/auth/login', array(
