@@ -54,13 +54,18 @@ class BotManController extends Controller
             "username" => "alice",
             "password" => "alice"
         );
+
+    $jar = new \GuzzleHttp\Cookie\CookieJar();
+
         $response = $client->request('POST', '', [
-            'json' => $credentialsArr
+            'json' => $credentialsArr,
+            'cookies' => $jar
         ]);
 
 
-
-        var_dump($response->getHeader('Set-Cookie'));
+        echo $response;
+        echo $response->getBody();
+        // var_dump($response->getHeader('Set-Cookie'));
 
         // print_r(json_decode($response->getHeader('Set-Cookie'), true));
     }
