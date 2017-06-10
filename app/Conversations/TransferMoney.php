@@ -20,6 +20,10 @@ class TransferMoney
         return array("status" => true, "message" => ""); 
     }
 
+    public static function createCategory($category) {
+         return array("status" => true, "message" => ""); 
+    }
+
     public static function checkpassword($password) {
          return array("status" => true, "message" => "");
     }
