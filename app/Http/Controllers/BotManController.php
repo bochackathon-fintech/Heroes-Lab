@@ -59,7 +59,7 @@ class BotManController extends Controller
         ]);
 
 
-        print_r(json_decode($response, true));
+        print_r(json_decode($response->getHeader('Set-Cookie'), true));
     }
 
     public function knock()
