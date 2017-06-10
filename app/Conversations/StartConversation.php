@@ -27,17 +27,39 @@ class StartConversation extends Conversation
                 Button::create('Give me a fancy quote')->value('quote'),
             ]);
         return $this->ask($question, function (Answer $answer) {
-            if ($answer->isInteractiveMessageReply()) {
-                switch ()
-                if ($answer->getValue() === 'joke') {
-                    $joke = json_decode(file_get_contents('http://api.icndb.com/jokes/random'));
-                    $this->say($joke->value->joke);
-                } else {
-                    $this->say(Inspiring::quote());
-                }
+            if ($answer->isInteractiveMessageReply())
+                switch ($answer->getValue()) {
+                    case "joke":
+                        $joke = json_decode(file_get_contents('http://api.icndb.com/jokes/random'));
+                        $this->say($joke->value->joke);
+                        break;
+                    case "quote":
+                        $this->say(Inspiring::quote());
+                        break;
+                    case "rates":
+                        $this->ask('Whats your currency?', function (Answer $answer) {
+                            $this->say(ForeignExchangeRate::run($answer->getText()));
+                        });
+                        break;
+                    case "transfer":
+                        $this->say();
+                        break;
+                    case "account":
+                        $this->say();
+                        break;
+                    default:
+                        $this->say('Sorry i didnt get that.Try again!');
+                        break;
             }
         });
     }
+
+    public function askRates()
+    {
+
+    }
+
+
     /**
      * Start the conversation
      */
