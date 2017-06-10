@@ -5,102 +5,23 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <title>Laravel</title>
-
-    <!-- Fonts -->
-    <link href="https://fonts.googleapis.com/css?family=Raleway:100,600" rel="stylesheet" type="text/css">
+    <title>Metis | Banking Battler</title>
 
     <!-- Styles -->
-    <style>
-        html, body {
-            background-color: #fff;
-            color: #636b6f;
-            font-family: 'Raleway', sans-serif;
-            font-weight: 100;
-            height: 100vh;
-            margin: 0;
-        }
 
-        .full-height {
-            height: 100vh;
-        }
+    <link href="{{url('css/core.min.css')}}" rel="stylesheet">
+    <link href="{{url('css/thesaas.css')}}" rel="stylesheet">
+    <link href="{{url('css/style.css')}}" rel="stylesheet">
 
-        .flex-center {
-            align-items: center;
-            display: flex;
-            justify-content: center;
-        }
+    <!-- Favicons -->
+    <link rel="apple-touch-icon" href="{{url('images/apple-touch-icon.png')}}">
 
-        .position-ref {
-            position: relative;
-        }
-
-        .top-right {
-            position: absolute;
-            right: 10px;
-            top: 18px;
-        }
-
-        .content {
-            text-align: center;
-        }
-
-        .title {
-            font-size: 84px;
-        }
-
-        .welcome_paragraph {
-            font-size: : 50px;
-        }
+    <link rel="icon" href="{{url('images/favicon.png')}}">
 
 
-
-        @-webkit-keyframes fadeIn { from { opacity:0; } to { opacity:1; } }
-        @-moz-keyframes fadeIn { from { opacity:0; } to { opacity:1; } }
-        @keyframes fadeIn { from { opacity:0; } to { opacity:1; } }
-
-        .fade-in {
-            opacity:0;  /* make things invisible upon start */
-            -webkit-animation:fadeIn ease-in 1;  /* call our keyframe named fadeIn, use animattion ease-in and repeat it only 1 time */
-            -moz-animation:fadeIn ease-in 1;
-            animation:fadeIn ease-in 1;
-
-            -webkit-animation-fill-mode:forwards;  /* this makes sure that after animation is done we remain at the last keyframe value (opacity: 1)*/
-            -moz-animation-fill-mode:forwards;
-            animation-fill-mode:forwards;
-
-            -webkit-animation-duration:3s;
-            -moz-animation-duration:3s;
-            animation-duration:3s;
-        }
-
-        .fade-in.title {
-            -webkit-animation-delay: 1s;
-            -moz-animation-delay: 1s;
-            animation-delay: 1s;
-        }
-
-        .fade-in.welcome_paragraph {
-            -webkit-animation-delay: 4s;
-            -moz-animation-delay:4s;
-            animation-delay: 4s;
-        }
-        .links > a {
-            color: #636b6f;
-            padding: 0 25px;
-            font-size: 12px;
-            font-weight: 600;
-            letter-spacing: .1rem;
-            text-decoration: none;
-            text-transform: uppercase;
-        }
-
-        .m-b-md {
-            margin-bottom: 30px;
-        }
-    </style>
 </head>
 <body>
+
 <script>
 
     window.fbAsyncInit = function() {
@@ -132,28 +53,249 @@
             @endif
         </div>
     @endif
+    <!-- Navigation -->
+        <nav class="topbar topbar-inverse topbar-expand-sm topbar-sticky">
+            <div class="container">
+
+                <div class="topbar-left">
+                    <button class="topbar-toggler">&#9776;</button>
+                    <span class="topbar-brand fs-18 fw-400">
+           <a class="logo-default" href="#" style="color: #563d7c">Metis</a>
+           <a class="logo-inverse text-white" href="#">Metis</a>
+         </span>
+                </div>
+
+                <div class="topbar-right">
+                    <ul class="topbar-nav nav">
+                        <li class="nav-item"><a class="nav-link" href="#">Getting started</a></li>
+                        <li class="nav-item"><a class="nav-link" href="#">CSS</a></li>
+                        <li class="nav-item"><a class="nav-link" href="#">Components</a></li>
+                        <li class="nav-item"><a class="nav-link" href="#">Javascript</a></li>
+                        <li class="nav-item"><a class="nav-link" href="#">Customize</a></li>
+                    </ul>
+                </div>
 
 
-        <div class= "fade-in">
-
-        <div class="content">
-            <div class="title">
-                Welcome to MetisBot homepage
             </div>
-            <div class="welcome_paragraph">
-                <p>
-                    Hi! My name is Metis, your financial assistance. I will walk you through what i can do below :)
-                </p>
+        </nav>
+        <!-- END Topbar -->
+
+        <!-- Header -->
+        <header class="header header-inverse h-fullscreen p-0 overflow-hidden" data-overlay="7">
+            <video class="bg-video" poster="{{url('images/workspace.jpg')}}" autoplay loop>
+                <source src="{{url('images/video/workspace.mp4')}}" type="video/mp4">
+                <source src="{{url('images/video/workspace.webm')}}" type="video/webm">
+            </video>
+            <section>
+                <div class="container">
+                    <div class="row">
+                        <div class="col-12 col-md-6 align-self-center pb-70">
+                            <h1>Managing and controling your financial life before you know it. Literally.</h1>
+                            <a href="https://www.messenger.com/t/372522269811171/?messaging_source=source%3Apages%3Amessage_shortlink" class="btn btn-lg btn-round btn-primary shadow-3" target="_blank">Meet Metis</a>
+                              </div>
+                        <div class="col-12 col-md-6 text-center">
+                            <img class="mr-40" src="{{url('images/phone-2.png')}}" alt="..." style="margin-top: 15%;">
+                        </div>
+                    </div>
+
+                </div>
+            </section>
+
+        </header>
+        <!-- END Header -->
+
+        <!--
+       |‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒
+       | Vertical Tab
+       |‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒
+       !-->
+        <section class="section">
+            <div class="container">
+                <header class="section-header">
+                    <h2>Meet Metis</h2>
+                    <img src="{{url('images/logo5.png')}}">
+                    <hr>
+                    <p class="lead">The most powerful and personalize banker tailor to your needs.</p>
+                </header>
+
+
+
+                <div class="row gap-5">
+
+
+                    <div class="col-12 col-md-4">
+                        <ul class="nav nav-vertical">
+                            <li class="nav-item">
+                                <a class="nav-link active" data-toggle="tab" href="#home-2">
+                                    <h6>Open a bank account</h6>
+                                    <p>Some description about tab</p>
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" data-toggle="tab" href="#profile-2">
+                                    <h6>Unlock powerful insights</h6>
+                                    <p></p>
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" data-toggle="tab" href="#messages-2">
+                                    <h6>Transfer cash in Real-Time</h6>
+                                    <p>Some description about tab</p>
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" data-toggle="tab" href="#settings-2">
+                                    <h6>High level of trust</h6>
+                                    <p>Some description about tab</p>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+
+
+                    <div class="col-12 col-md-8 align-self-center">
+                        <div class="tab-content">
+                            <div class="tab-pane fade show active" id="home-2">
+                                <p class="text-center"><img src="{{url('images/blog-1.jpg')}}" alt="..."></p>
+                            </div>
+
+                            <div class="tab-pane fade" id="profile-2">
+                                <p class="text-center"><img src="{{url('images/blog-2.jpg')}}" alt="..."></p>
+                            </div>
+
+                            <div class="tab-pane fade" id="messages-2">
+                                <p class="text-center"><img src="{{url('images/blog-3.jpg')}}" alt="..."></p>
+                            </div>
+
+                            <div class="tab-pane fade" id="settings-2">
+                                <p class="text-center"><img src="{{url('images/blog-4.jpg')}}" alt="..."></p>
+                            </div>
+
+                        </div>
+                    </div>
+
+
+                </div>
+
+
             </div>
-            <div class="fb-messengermessageus"
-                 messenger_app_id="134601750423617"
-                 page_id="372522269811171"
-                 color="blue"
-                 size="standard" >
+        </section>
+
+        <!--
+                |‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒
+                | Why you should trust us
+                |‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒
+                !-->
+
+        <section class="section">
+            <div class="container">
+                <h2 class="text-center">Why you should use Metis?</h2><br><br>
+                <div class="row gap-y text-center">
+
+                    <div class="col-12 col-md-6 col-lg-3">
+                        <p class="text-center"><img src="{{url('images/247av.png')}}"></p>
+                        <h5>Availability</h5>
+                        <p>24 / 7 ease of access</p>
+                    </div>
+
+
+                    <div class="col-12 col-md-6 col-lg-3">
+                        <p class="text-center"><img src="{{url('images/analysis.png')}}"></p>
+                        <h5>Insights</h5>
+                        <p>Get better understanding of your bank statement</p>
+                    </div>
+
+
+                    <div class="col-12 col-md-6 col-lg-3">
+                        <p class="text-center"><img src="{{url('images/transfer2.png')}}"></p>
+                        <h5>B2B Transfer</h5>
+                        <p>Transfer money securely over Blockchain</p>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+        <!--
+      |‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒
+      | Team
+      |‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒
+      !-->
+        <section class="section">
+            <div class="container">
+                <header class="section-header">
+                    <h2>Heroes_Lab</h2>
+                    <hr>
+                    <p class="lead">Meet out team of heroes that make this great product.</p>
+                </header>
+
+                <div class="row gap-y">
+                    <div class="col-12 col-md-4 team-2">
+                        <a href="#">
+                            <img src="{{url('images/LG.jpg')}}" alt="...">
+                        </a>
+                        <h5>George Lambrianides</h5>
+                        <medium>Tech / Business</medium>
+                    </div>
+
+
+                    <div class="col-12 col-md-4 team-2">
+                        <a href="#">
+                            <img src="{{url('images/AP.jpg')}}" alt="...">
+                        </a>
+                        <h5>Andreas Poyiatzis</h5>
+                        <medium>Tech</medium>
+                    </div>
+
+
+                    <div class="col-12 col-md-4 team-2">
+                        <a href="#">
+                            <img src="{{url('images/NM.jpg')}}" alt="...">
+                        </a>
+                        <h5>Nikos Mouzoura</h5>
+                        <medium>Tech</medium>
+
+                    </div>
+
+                    <div class="col-12 col-md-4 team-2">
+                        <a href="#">
+                            <img src="{{url('images/MV.jpg')}}" alt="...">
+                        </a>
+                        <h5>Marios Vasiliou</h5>
+                        <medium>Tech</medium>
+
+                    </div>
+
+                    <div class="col-12 col-md-4 team-2">
+                        <a href="#">
+                            <img src="{{url('images/TD.jpg')}}" alt="...">
+                        </a>
+                        <h5>Tommys Daniel</h5>
+                        <medium>Tech</medium>
+
+                    </div>
+
+                    <div class="col-12 col-md-4 team-2">
+                        <a href="#">
+                            <img src="{{url('images/PA.jpg')}}" alt="...">
+                        </a>
+                        <h5>Prodromos Alampritis</h5>
+                        <medium>Tech</medium>
+
+                    </div>
+                </div>
+
             </div>
 
-        </div>
-    </div>
+        </section>
+
+
+
+        <!-- Scripts -->
+        <script src="{{url('js/core.min.js')}}"></script>
+        <script src="{{url('js/thesaas.min.js')}}"></script>
+        <script src="{{url('js/script.js')}}"></script>
+</div>
 
 </body>
 </html>
