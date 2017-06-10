@@ -53,43 +53,45 @@ class StartConversation extends Conversation
                                 $this->say($checkbalance['message']);
                                 $this->repeat($question);
                             }
-                            $balance = $answer->get(Text());
-                            $this->ask('provide interledger address', function (Answer $answer) use ($interledger, $checkbalance, $question) {
-                                $checkinterledger = TransferMoney::checkInterledger($answer->getText());
-                                if (!$checkinterledger['status']) {
-                                    $this->say($checkbalance['message']);
-                                    $this->repeat($question);
-                                }
-                                $summary = Question::create("send " . $balance . " to " . $interledger)
-                                    ->fallback('Unable to ask question')
-                                    ->callbackId('transaction_answer')
-                                    ->addButtons([
-                                        Button::create('Yes')->value('Y'),
-                                        Button::create('No')->value('N')
-                                ]);
-                                return ($this->ask($summary, function (Answer $answer) use ($question, $balance, $interledger) {
-                                     if ($answer->isInteractiveMessageReply()) {
-                                        if ($answer->getValue() == 'Y') {
-                                            $this->ask('Give me your password?', function (Answer $answer) use ($question, $balance, $interledger) {
-                                                $checkpassword = TransferMoney::checkPassword($answer->getText());
-                                                if (!$checkpassword['status']) {
-                                                    $this->say($checkpassword['message']);
-                                                    $this->repeat($question);
-                                                }
-                                                $createTransfer = TransferMoney::createTransfer($balance, $interledger);
-                                                if (!$createTransfer['status']) {
-                                                    $this->say($createTransfer['message']);
-                                                    $this->repeat($question);
-                                                }
-                                            });
-                                        }
-                                        else {
+                            $balance = $answer->getText();
+                        });
+
+                        $this->ask('provide interledger address', function (Answer $answer) use ($interledger, $checkbalance, $question) {
+                            $checkinterledger = TransferMoney::checkInterledger($answer->getText());
+                            if (!$checkinterledger['status']) {
+                                $this->say($checkbalance['message']);
+                                $this->repeat($question);
+                            }
+                        });
+                        $summary = Question::create("send " . $balance . " to " . $interledger)
+                            ->fallback('Unable to ask question')
+                            ->callbackId('transaction_answer')
+                            ->addButtons([
+                                Button::create('Yes')->value('Y'),
+                                Button::create('No')->value('N')
+                            ]);
+                        return ($this->ask($summary, function (Answer $answer) use ($question, $balance, $interledger) {
+                            if ($answer->isInteractiveMessageReply()) {
+                                if ($answer->getValue() == 'Y') {
+                                    $this->ask('Give me your password?', function (Answer $answer) use ($question, $balance, $interledger) {
+                                        $checkpassword = TransferMoney::checkPassword($answer->getText());
+                                        if (!$checkpassword['status']) {
+                                            $this->say($checkpassword['message']);
                                             $this->repeat($question);
                                         }
-                                     }
-                                }));
-                            });
-                        });
+                                        $createTransfer = TransferMoney::createTransfer($balance, $interledger);
+                                        if (!$createTransfer['status']) {
+                                            $this->say($createTransfer['message']);
+                                            $this->repeat($question);
+                                        }
+                                    });
+                                } else {
+                                    $this->repeat($question);
+                                }
+                            }
+
+                        }));
+
                         break;
                     case "account":
                         $this->ask('What do you want?', function (Answer $answer) {
