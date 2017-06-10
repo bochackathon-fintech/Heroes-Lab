@@ -21,7 +21,7 @@ class StartConversation extends Conversation
             ->callbackId('ask_reason')
             ->addButtons([
                 //Button::create('Manage my Account')->value('account'),
-                // Button::create('Transfer Money')->value('transfer'),
+                Button::create('Transfer Money')->value('transfer'),
                 Button::create('Check currency rates')->value('rates'),
                 // Button::create('Tell a joke')->value('joke'),
                 // Button::create('Give me a fancy quote')->value('quote'),
