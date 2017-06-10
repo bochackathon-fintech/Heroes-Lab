@@ -90,8 +90,6 @@ class BotManController extends Controller
             'json' => $accountArr
         ]);
 
-        echo $response;
-        exit;
         print_r(json_decode($response->getBody(), true));
     }
 
