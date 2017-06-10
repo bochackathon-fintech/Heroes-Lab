@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Conversations\StartConversation;
+use app\Custom\EnrichMessage;
 use Mpociot\BotMan\BotMan;
 
 class BotManController extends Controller
@@ -21,11 +22,11 @@ class BotManController extends Controller
 
         $botman->hears('start', function (BotMan $bot) {
             $bot->startConversation(new StartConversation());
-        });
+        })->middleware(new EnrichMessage());
 
         $botman->hears(config('services.botman.facebook_start_button_payload'), function (BotMan $bot) {
             $bot->startConversation(new StartConversation());
-        });
+        })->middleware(new EnrichMessage());;
 
         $botman->listen();
     }

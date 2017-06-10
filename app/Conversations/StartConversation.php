@@ -38,14 +38,19 @@ class StartConversation extends Conversation
                         break;
                     case "rates":
                         $this->ask('Whats your currency?', function (Answer $answer) {
+                            logger(var_export($answer, true));
                             $this->say(ForeignExchangeRate::run($answer->getText()));
                         });
                         break;
                     case "transfer":
-                        $this->say();
+                        $this->ask('Give me your password?', function (Answer $answer) {
+                            $this->say(TransferMoney::run($answer->getText()));
+                        });
                         break;
                     case "account":
-                        $this->say();
+                        $this->ask('What do you want?', function (Answer $answer) {
+                            $this->say(BOCApi::run($answer->getText()));
+                        });
                         break;
                     default:
                         $this->say('Sorry i didnt get that.Try again!');
