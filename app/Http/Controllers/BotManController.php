@@ -93,7 +93,7 @@ class BotManController extends Controller
     }
 
     public function createUser() {
-        $client = new GuzzleHttp\Client(['base_uri' => 'https://usdledger.online/users/kostis', array(
+        $client = new GuzzleHttp\Client(['base_uri' => 'https://usdledger.online/ledger/users/kostis', array(
             'content-type' => 'application/json',
         )]);
 
