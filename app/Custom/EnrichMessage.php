@@ -6,7 +6,7 @@
  * Time: 12:57 PM
  */
 
-namespace app\Custom;
+namespace App\Custom;
 
 
 use Mpociot\BotMan\Interfaces\DriverInterface;
@@ -20,6 +20,7 @@ class EnrichMessage implements MiddlewareInterface
      * Handle / modify the message.
      *
      * @param Message $message
+     * @param DriverInterface $driver
      */
     public function handle(Message &$message, DriverInterface $driver)
     {

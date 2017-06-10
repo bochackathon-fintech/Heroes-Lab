@@ -16,7 +16,7 @@ class StartConversation extends Conversation
      */
     public function askReason()
     {
-        $question = Question::create("Huh - you woke me up. What do you need?")
+        $question = Question::create("Hello :). What do you need?")
             ->fallback('Unable to ask question')
             ->callbackId('ask_reason')
             ->addButtons([
@@ -26,7 +26,8 @@ class StartConversation extends Conversation
                 // Button::create('Tell a joke')->value('joke'),
                 // Button::create('Give me a fancy quote')->value('quote'),
             ]);
-        return $this->ask($question, function (Answer $answer) {
+        return $this->ask($question, function (Answer $answer) use ($question) {
+            logger(var_export($answer, true));
             if ($answer->isInteractiveMessageReply())
                 switch ($answer->getValue()) {
                     case "joke":
@@ -38,7 +39,6 @@ class StartConversation extends Conversation
                         break;
                     case "rates":
                         $this->ask('Whats your currency?', function (Answer $answer) {
-                            logger(var_export($answer, true));
                             $this->say(ForeignExchangeRate::run($answer->getText()));
                         });
                         break;
@@ -46,67 +46,64 @@ class StartConversation extends Conversation
                         $available_balance = 100.00;
                         $interledger = "";
                         $balance = "";
-                        $this->ask('Your available balance is '.$available_balance.'. How much you want to transfer?', function (Answer $answer) use ($balance) {
+                        $checkbalance = "";
+                        $this->ask('Your available balance is ' . $available_balance . '. How much you want to transfer?', function (Answer $answer) use ($balance, $available_balance, $question) {
                             $checkbalance = TransferMoney::checkBalance($answer->getText(), $available_balance);
-                            if(!$checkbalance['status']) {
+                            if (!$checkbalance['status']) {
                                 $this->say($checkbalance['message']);
                                 $this->repeat($question);
                             }
                             $balance = $answer->get(Text());
                         });
 
-                        $this->ask('provide interledger address', function(Answer $answer) use($interledger) {
+                        $this->ask('provide interledger address', function (Answer $answer) use ($interledger, $checkbalance, $question) {
                             $checkinterledger = TransferMoney::checkInterledger($answer->getText());
-                            if(!$checkinterledger['status']) {
+                            if (!$checkinterledger['status']) {
                                 $this->say($checkbalance['message']);
                                 $this->repeat($question);
                             }
                         });
-                        $summary = Question::create("send ".$balance." to ".$interledger)
+                        $summary = Question::create("send " . $balance . " to " . $interledger)
                             ->fallback('Unable to ask question')
                             ->callbackId('transaction_answer')
                             ->addButtons([
                                 Button::create('Yes')->value('Y'),
                                 Button::create('No')->value('N')
-                        ]);
-                        return($this->ask($summary, function(Answer $answer) {
+                            ]);
+                        return ($this->ask($summary, function (Answer $answer) use ($question, $balance, $interledger) {
                             if ($answer->isInteractiveMessageReply()) {
-                                if($anser->getValue() == 'Y') {
-                                    $this->ask('Give me your password?', function (Answer $answer) {
+                                if ($answer->getValue() == 'Y') {
+                                    $this->ask('Give me your password?', function (Answer $answer) use ($question, $balance, $interledger) {
                                         $checkpassword = TransferMoney::checkPassword($answer->getText());
-                                        if(!$checkpassword['status']) {
+                                        if (!$checkpassword['status']) {
                                             $this->say($checkpassword['message']);
                                             $this->repeat($question);
                                         }
                                         $createTransfer = TransferMoney::createTransfer($balance, $interledger);
-                                        if(!$createTransfer['status']) {
+                                        if (!$createTransfer['status']) {
                                             $this->say($createTransfer['message']);
                                             $this->repeat($question);
                                         }
                                     });
-                                }
-                                else {
+                                } else {
                                     $this->repeat($question);
                                 }
                             }
+
                         }));
-                      
+
                         break;
                     case "account":
                         $this->ask('What do you want?', function (Answer $answer) {
+                            $answer->
                             $this->say(BOCApi::run($answer->getText()));
                         });
                         break;
                     default:
                         $this->say('Sorry i didnt get that.Try again!');
                         break;
-            }
+                }
         });
-    }
-
-    public function askRates()
-    {
-
     }
 
 

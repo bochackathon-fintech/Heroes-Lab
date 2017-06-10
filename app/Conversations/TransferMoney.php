@@ -6,7 +6,7 @@
  * Time: 12:51 PM
  */
 
-namespace app\Conversations;
+namespace App\Conversations;
 
 
 class TransferMoney
@@ -25,7 +25,7 @@ class TransferMoney
     }
 
     public static function createTransfer($balance, $interledger) {
-        return array("status" => false, "message" => "eftasame kopelia")
+        return array("status" => false, "message" => "eftasame kopelia");
     }
 
 }

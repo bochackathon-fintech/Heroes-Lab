@@ -3,10 +3,10 @@
 namespace App\Http\Controllers;
 
 use App\Conversations\StartConversation;
-use app\Custom\EnrichMessage;
+use App\Custom\EnrichMessage;
+use GuzzleHttp;
 use Mpociot\BotMan\BotMan;
 
-use GuzzleHttp;
 class BotManController extends Controller
 {
     /**
@@ -14,9 +14,11 @@ class BotManController extends Controller
      */
     public function handle()
     {
+        //get botman
         $botman = app('botman');
         $botman->verifyServices(env('TOKEN_VERIFY'));
-        // Simple respond method
+
+        //basic functionality for auth users
         $botman->hears('Hello', function (BotMan $bot) {
             $bot->reply('Hi there :)');
         });
@@ -25,10 +27,12 @@ class BotManController extends Controller
             $bot->startConversation(new StartConversation());
         })->middleware(new EnrichMessage());
 
+        //user clicked get started button
         $botman->hears(config('services.botman.facebook_start_button_payload'), function (BotMan $bot) {
             $bot->startConversation(new StartConversation());
         })->middleware(new EnrichMessage());;
 
+        //list to user
         $botman->listen();
     }
     /**
