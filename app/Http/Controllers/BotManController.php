@@ -45,6 +45,23 @@ class BotManController extends Controller
         $bot->startConversation(new StartConversation());
     }
 
+    public function getCookie() {
+        $client = new GuzzleHttp\Client(['base_uri' => 'https://usdledger.online/api/auth/login', array(
+            'content-type' => 'application/json'
+        )]);
+
+        $credentialsArr = array(
+            "username" => "alice",
+            "password" => "alice"
+        );
+        $response = $client->request('POST', '', [
+            'json' => $credentialsArr
+        ]);
+
+
+        print_r(json_decode($response->getBody(), true));
+    }
+
     public function knock()
     {
 
