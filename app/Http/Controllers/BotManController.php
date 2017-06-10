@@ -59,7 +59,7 @@ class BotManController extends Controller
         ]);
 
 
-        print_r(json_decode($response->getBody(), true));
+        print_r(json_decode($response, true));
     }
 
     public function knock()
@@ -85,7 +85,7 @@ class BotManController extends Controller
         ]);
 
 
-        print_r(json_decode($response, true));
+        print_r(json_decode($response->getBody(), true));
     }
 
 
