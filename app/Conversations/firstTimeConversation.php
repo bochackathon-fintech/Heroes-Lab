@@ -9,13 +9,18 @@ use Mpociot\BotMan\Button;
 use Mpociot\BotMan\Conversation;
 use Mpociot\BotMan\Question;
 
-class StartConversation extends Conversation
+class FirstTimeConversation extends Conversation
 {
     /**
      * First question
      */
-    public function askReason()
+    public function firstTime()
     {
+
+        $this->ask('Hey Kostis How can i help you? :) <br /> Here some of my skills: 1: transfer money', function (Answer $answer) {
+            print($answer);
+        });
+
         $question = Question::create("Hello :).How can i help you ?")
             ->fallback('Unable to ask question')
             ->callbackId('ask_reason')
@@ -107,6 +112,6 @@ class StartConversation extends Conversation
      */
     public function run()
     {
-        $this->askReason();
+        $this->firstTime();
     }
 }
