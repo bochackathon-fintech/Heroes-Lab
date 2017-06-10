@@ -59,7 +59,7 @@ class BotManController extends Controller
         ]);
 
 
-        print_r(json_decode($response->getHeader(), true));
+        print_r($response->json());
     }
 
     public function knock()
