@@ -6,7 +6,7 @@
  * Time: 2:12 AM
  */
 
-namespace app\Conversations;
+namespace App\Conversations;
 
 
 use Illuminate\Foundation\Inspiring;
