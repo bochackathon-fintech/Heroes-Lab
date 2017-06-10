@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Conversations\FirstTimeConversation;
 use App\Conversations\StartConversation;
 use App\Custom\EnrichMessage;
 use GuzzleHttp;
@@ -19,7 +20,6 @@ class BotManController extends Controller
         $botman->verifyServices(env('TOKEN_VERIFY'));
 
 
-
         //basic functionality for auth users
         $botman->hears('Hello', function (BotMan $bot) {
 
@@ -30,19 +30,14 @@ class BotManController extends Controller
             $bot->startConversation(new StartConversation());
         })->middleware(new EnrichMessage());
 
-        //user clicked get started button
+        //user clicked get started button the first time
         $botman->hears(config('services.botman.facebook_start_button_payload'), function (BotMan $bot) {
-            $bot->firstTimeConversation(new firstTimeConversation);
+            $bot->startConversation(new FirstTimeConversation);
         })->middleware(new EnrichMessage());
 
 
         //list to user
         $botman->listen();
-    }
-
-    public function firstTimeConversation(BotMan $bot) {
-        $bot->firstTimeConversation(new firstTimeConversation);
-
     }
 
     /**
@@ -54,8 +49,6 @@ class BotManController extends Controller
     {
         $bot->startConversation(new StartConversation());
     }
-
-
 
 
     public function getCookie() {
