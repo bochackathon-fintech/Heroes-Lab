@@ -11,25 +11,10 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/', 'HomeController@index');
 
 Route::match(['get', 'post'], '/botman', 'BotManController@handle');
 
-
-
-Route::get('webhook', function () {
-    $botman = app('botman');
-    $botman->verifyServices(env('TOKEN_VERIFY'));
-
-//// give the bot something to listen for.
-//    $botman->hears('hello', function (BotMan $bot) {
-//        $bot->reply('Hello yourself.');
-//    });
-//
-//// start listenin
-//    $botman->listen();
-});
+Route::get('webhook', 'AuthorizationController@verify');
 
 
