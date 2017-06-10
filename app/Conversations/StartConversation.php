@@ -7,6 +7,7 @@ use Illuminate\Foundation\Inspiring;
 use Mpociot\BotMan\Answer;
 use Mpociot\BotMan\Button;
 use Mpociot\BotMan\Conversation;
+use Mpociot\BotMan\Facebook\ElementButton;
 use Mpociot\BotMan\Question;
 
 class StartConversation extends Conversation
@@ -55,9 +56,6 @@ class StartConversation extends Conversation
                             }
                             $balance = $answer->getText();
 
-                            $this->reply(Buttontemplate::create("What's the occasion?")
-                                ->addButton(ElementButton::create('Food')->value('Food'))
-                            );
                             $occasion = Question::create("What's the occasion?")
                                     ->fallback('Unable to ask question')
                                     ->callbackId('transaction_answer')
