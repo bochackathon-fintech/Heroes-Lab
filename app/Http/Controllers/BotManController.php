@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use app\Conversations\ExampleConversation;
-use BotMan;
+use Mpociot\BotMan\BotMan;
 
 class BotManController extends Controller
 {
