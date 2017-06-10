@@ -20,11 +20,11 @@ class StartConversation extends Conversation
             ->fallback('Unable to ask question')
             ->callbackId('ask_reason')
             ->addButtons([
-                Button::create('Manage my Account')->value('account'),
-                Button::create('Transfer Money')->value('transfer'),
+                //Button::create('Manage my Account')->value('account'),
+                // Button::create('Transfer Money')->value('transfer'),
                 Button::create('Check currency rates')->value('rates'),
-                Button::create('Tell a joke')->value('joke'),
-                Button::create('Give me a fancy quote')->value('quote'),
+                // Button::create('Tell a joke')->value('joke'),
+                // Button::create('Give me a fancy quote')->value('quote'),
             ]);
         return $this->ask($question, function (Answer $answer) {
             if ($answer->isInteractiveMessageReply())
