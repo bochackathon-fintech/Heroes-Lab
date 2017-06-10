@@ -1,10 +1,4 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: DarkP
- * Date: 6/10/2017
- * Time: 12:57 PM
- */
 
 namespace App\Custom;
 
