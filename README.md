@@ -1,5 +1,5 @@
 # Metisbot
-Metisbot-chatbot with botman for BOC fintech hachathon
+Metisbot-chatbot with botman for BOC fintech hackathon
 
 ##Website: https://allonszee.com/
 
