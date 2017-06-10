@@ -14,9 +14,13 @@ class FirstTimeConversation extends Conversation
      */
     public function firstTime()
     {
-
+        $user = $bot->getUser();
+        $bot->say('Hello '.$user->getFirstName().' '.$user->getLastName());
+        $bot->say('Your username is: '.$user->getUsername());
+        $bot->say('Your ID is: '.$user->getId());
         $this->ask('Hey Kostis How can i help you? :) <br /> Here some of my skills: 1: transfer money', function (Answer $answer) {
             $this->say('bravo');
+        
         });
 
         // $question = Question::create("Hello :).How can i help you ?")
