@@ -19,9 +19,7 @@ class BotManController extends Controller
             $bot->reply('Hi there :)');
         });
 
-        $botman->hears(config('services.botman.facebook_start_button_payload'),function (BotMan $bot) {
-            $bot->reply('Hi there :)');
-        });
+        $botman->hears('Start conversation', BotManController::class.'@startConversation');
 
         $botman->listen();
     }
