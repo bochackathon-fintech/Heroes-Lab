@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Conversations\ExampleConversation;
+use App\Conversations\StartConversation;
 use Mpociot\BotMan\BotMan;
 
 class BotManController extends Controller
@@ -20,7 +20,11 @@ class BotManController extends Controller
         });
 
         $botman->hears('start', function (BotMan $bot) {
-            $bot->startConversation(new ExampleConversation());
+            $bot->startConversation(new StartConversation());
+        });
+
+        $botman->hears(config('services.botman.facebook_start_button_payload'), function (BotMan $bot) {
+            $bot->startConversation(new StartConversation());
         });
 
         $botman->listen();
@@ -31,6 +35,6 @@ class BotManController extends Controller
      */
     public function startConversation(BotMan $bot)
     {
-        $bot->startConversation(new ExampleConversation());
+        $bot->startConversation(new StartConversation());
     }
 }

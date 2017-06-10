@@ -9,7 +9,7 @@ use Mpociot\BotMan\Button;
 use Mpociot\BotMan\Conversation;
 use Mpociot\BotMan\Question;
 
-class ExampleConversation extends Conversation
+class StartConversation extends Conversation
 {
     /**
      * First question
@@ -20,11 +20,15 @@ class ExampleConversation extends Conversation
             ->fallback('Unable to ask question')
             ->callbackId('ask_reason')
             ->addButtons([
+                Button::create('Manage my Account')->value('account'),
+                Button::create('Transfer Money')->value('transfer'),
+                Button::create('Check currency rates')->value('rates'),
                 Button::create('Tell a joke')->value('joke'),
                 Button::create('Give me a fancy quote')->value('quote'),
             ]);
         return $this->ask($question, function (Answer $answer) {
             if ($answer->isInteractiveMessageReply()) {
+                switch ()
                 if ($answer->getValue() === 'joke') {
                     $joke = json_decode(file_get_contents('http://api.icndb.com/jokes/random'));
                     $this->say($joke->value->joke);
