@@ -47,7 +47,7 @@ class StartConversation extends Conversation
                         $interledger = "";
                         $balance = "";
                         $checkbalance = "";
-                        $this->ask('Your available balance is ' . $available_balance . '. How much you want to transfer?', function (Answer $answer) use ($interledger, $balance, $available_balance, $question) {
+                        $this->ask('Your available balance is ' . $available_balance . '. How much you would like to transfer?', function (Answer $answer) use ($interledger, $balance, $available_balance, $question) {
                             $checkbalance = TransferMoney::checkBalance($answer->getText(), $available_balance);
                             if (!$checkbalance['status']) {
                                 $this->say($checkbalance['message']);
@@ -55,14 +55,15 @@ class StartConversation extends Conversation
                             }
                             $balance = $answer->getText();
 
-                            $this->ask('provide interledger address', function (Answer $answer) use ($interledger, $checkbalance, $question, $balance) {
+                            $this->ask("Great, What's the private metis ID?", function (Answer $answer) use ($interledger, $checkbalance, $question, $balance) {
                                 $checkinterledger = TransferMoney::checkInterledger($answer->getText());
                                 if (!$checkinterledger['status']) {
                                     $this->say($checkbalance['message']);
                                     $this->repeat($question);
                                 }
                                 $interledger = $answer->getText();
-                                $summary = Question::create("send " . $balance . " to " . $interledger)
+                                $currency = "&euro;";
+                                $summary = Question::create("In order to confirm you will like to send " .$currency. $balance . " to " . $interledger)
                                     ->fallback('Unable to ask question')
                                     ->callbackId('transaction_answer')
                                     ->addButtons([
@@ -72,18 +73,12 @@ class StartConversation extends Conversation
                                 $this->ask($summary, function (Answer $answer) use ($question, $balance, $interledger) {
                                     if ($answer->isInteractiveMessageReply()) {
                                         if ($answer->getValue() == 'Y') {
-                                            $this->ask('Give me your password?', function (Answer $answer) use ($question, $balance, $interledger) {
-                                                $checkpassword = TransferMoney::checkPassword($answer->getText());
-                                                if (!$checkpassword['status']) {
-                                                    $this->say($checkpassword['message']);
-                                                    $this->repeat($question);
-                                                }
-                                                $createTransfer = TransferMoney::createTransfer($balance, $interledger);
-                                                if (!$createTransfer['status']) {
-                                                    $this->say($createTransfer['message']);
-                                                    $this->repeat($question);
-                                                }
-                                            });
+                                            $createTransfer = TransferMoney::createTransfer($balance, $interledger);
+                                            if (!$createTransfer['status']) {
+                                                $this->say($createTransfer['message']);
+                                                $this->repeat($question);
+                                            }
+                                            $this->say("Your payment transfer was successful");
                                         } else {
                                             $this->repeat($question);
                                         }

@@ -45,6 +45,28 @@ class BotManController extends Controller
         $bot->startConversation(new StartConversation());
     }
 
+    public function getCookie() {
+        $client = new GuzzleHttp\Client(['base_uri' => 'https://usdledger.online/api/auth/login', array(
+            'content-type' => 'application/json',
+        )]);
+
+        $credentialsArr = array(
+            "username" => "alice",
+            "password" => "alice"
+        );
+
+
+        $response = $client->request('POST', '', [
+            'json' => $credentialsArr
+        ]);
+
+
+        echo $response->getBody();
+        // var_dump($response->getHeader('Set-Cookie'));
+
+        // print_r(json_decode($response->getHeader('Set-Cookie'), true));
+    }
+
     public function knock()
     {
 
@@ -67,9 +89,25 @@ class BotManController extends Controller
             'json' => $accountArr
         ]);
 
-
         print_r(json_decode($response->getBody(), true));
     }
 
+    public function createUser() {
+        $client = new GuzzleHttp\Client(['base_uri' => 'https://usdledger.online/users/kostis', array(
+            'content-type' => 'application/json',
+        )]);
+
+        $createUser = array(
+            "password" => "kostis"
+        );
+
+
+        $response = $client->request('POST', '', [
+            'json' => $createUser
+        ]);
+
+
+        echo $response->getBody();
+    }
 
 }
