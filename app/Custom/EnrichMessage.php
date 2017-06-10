@@ -18,11 +18,13 @@ class EnrichMessage implements MiddlewareInterface
      */
     public function handle(Message &$message, DriverInterface $driver)
     {
-        ///$driver->isBot()
-        $message->addExtras('info', [
-            'user' => $driver->getUser($message),
-            'channel' => $message->getChannel()
-        ]);
+        if (!$driver->isBot()) {
+            $message->addExtras('info', [
+                'user' => $driver->getUser($message),
+                'channel' => $message->getChannel()
+            ]);
+        }
+
     }
 
     /**
