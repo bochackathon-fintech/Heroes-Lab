@@ -61,7 +61,7 @@ class StartConversation extends Conversation
                                     $this->say($checkbalance['message']);
                                     $this->repeat($question);
                                 }
-
+                                $interledger = $answer->getText();
                                 $summary = Question::create("send " . $balance . " to " . $interledger)
                                     ->fallback('Unable to ask question')
                                     ->callbackId('transaction_answer')
