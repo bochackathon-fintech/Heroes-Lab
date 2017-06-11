@@ -64,7 +64,7 @@ return [
                                     'payload' => 'TRANSACTIONS',
                                 ],
                                 [
-                                    'title' => 'AVAILABLE BALANCE',
+                                    'title' => 'Available Balance',
                                     'type' => 'postback',
                                     'payload' => 'BALANCE',
                                 ],
