@@ -57,7 +57,7 @@ class User extends Authenticatable
     /**
      * @param string $username
      */
-    public function setUsername(string $username)
+    public function setUsernameAttribute(string $username)
     {
         $this->username = $username;
 
