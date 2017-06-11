@@ -6,7 +6,6 @@ use App\Conversations\FirstTimeConversation;
 use App\Conversations\StartConversation;
 use App\Custom\EnrichMessage;
 use App\User;
-use GuzzleHttp;
 use Mpociot\BotMan\Answer;
 use Mpociot\BotMan\BotMan;
 use Mpociot\BotMan\Button;
@@ -27,23 +26,6 @@ class BotManController extends Controller
         //user clicked get started button the first time
         $botman->hears(config('services.botman.facebook_start_button_payload'), function (BotMan $bot) {
             $bot->startConversation(new FirstTimeConversation($bot, $bot->getMessage()->getChannel()));
-        })->middleware(new EnrichMessage());
-        
-        $botman->hears('DELETE_ACCOUNT', function (BotMan $bot) {
-            $bot->ask("in order to delete your account, we would like you to type your password",function (Answer $answer) {
-                if($answer->getText()) {
-                    if (Hash::check($answer->getText(), Auth::User()->password)) {
-                        $user =Auth::User();
-                        $user->is_locked = true;
-                        $user->save();
-                        
-                        $bot->reply('your account has been locked');
-                    }
-                    else
-                        $bot->reply('Oh dear, Wrong password :( ');       
-                }
-            });
-       
         })->middleware(new EnrichMessage());
 
         //ask user to give information
@@ -82,6 +64,21 @@ class BotManController extends Controller
 
                 $bot->reply('My name is Metis.Nice to meet you!');
             });
+            $botman->call('DELETE_ACCOUNT', function (BotMan $bot) {
+                $bot->ask("in order to delete your account, we would like you to type your password", function (Answer $answer) use ($bot) {
+                    if ($answer->getText()) {
+                        if (Hash::check($answer->getText(), Auth::User()->password)) {
+                            $user = auth()->user();
+                            $user->is_locked = 1;
+                            $user->save();
+
+                            $bot->reply('Your account has been locked');
+                        } else
+                            $bot->reply('Oh dear, Wrong password :( ');
+                    }
+                });
+            })->middleware(new EnrichMessage());
+
         }
 
 

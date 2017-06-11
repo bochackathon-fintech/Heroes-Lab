@@ -45,8 +45,8 @@ return [
         'nexmo_secret' => env('NEXMO_SECRET'),
         'slack_token' => env('SLACK_TOKEN'),
         'telegram_token' => env('TELEGRAM_TOKEN'),
-        'facebook_token' => env('FACEBOOK_TOKEN'),
-        'facebook_app_secret' => env('FACEBOOK_SECRET'),
+        'facebook_token' => env('FACEBOOK_TOKEN', 'EAAB6a2mFKEEBAAjg2lwg3ZCq65rRfDW92KdV2DuIEALZCgODsVNSPdrJ6G5uAVO61NwSpUa9DZCnjMWPngECDSki3qnlqZB7K8ZBC368GEG7gRXxrcRR8ZBuHrwxfZAf6oc5sBZCxHpZBKy1ww7mVAZCfEFRAEsLrj2tiwje7pIcPXVAZDZD'),
+        'facebook_app_secret' => env('FACEBOOK_SECRET', 'ec1011f694f59f504b31039364947cbb'),
         'facebook_start_button_payload' => 'FIRST_TIME',
         'facebook_persistent_menu' => [
             'persistent_menu' => [

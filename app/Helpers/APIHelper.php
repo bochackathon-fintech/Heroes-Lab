@@ -41,7 +41,7 @@ class APIHelper
 
     public function getAccount(string $swiftBankCode, string $accountID, string $viewID)
     {
-        $url = sprintf('http://api.bocapi.net/v1/api/banks/%s/accounts/%s/%s/account', [$swiftBankCode, $accountID, $viewID]);
+        $url = sprintf('http://api.bocapi.net/v1/api/banks/%s/accounts/%s/%s/account', $swiftBankCode, $accountID, $viewID);
         return $this->get($url);
     }
 
@@ -145,8 +145,64 @@ class APIHelper
 
     public function getViews(string $swiftBankCode)
     {
-        $url = sprintf('http://api.bocapi.net/v1/api/banks/%s/views', [$swiftBankCode]);
+        $url = sprintf('http://api.bocapi.net/v1/api/banks/%s/views', $swiftBankCode);
         return $this->get($url);
+    }
+
+    /**
+     * @param string $iban
+     * @return string
+     */
+    public function getAvailableBalanceText(string $iban)
+    {
+        $info = $this->getAccountIDAndBankIDFromIBAN($iban);
+        $accountID = $info['id'];
+        $swift = $info['bank_id'];
+        $views = $this->getViews($swift);
+        $views = array_get($views, 'views');
+        $views = array_first($views);
+        $viewID = $views['id'];
+        $account = $this->getAccount($swift, $accountID, $viewID);
+        $balance = array_get($account, 'balance.amount', 'Unknown');
+        $currency = array_get($account, 'balance.currency', '');
+        $balanceText = $balance . ' ' . $currency;
+        return $balanceText;
+    }
+
+    /**
+     * @param string $iban
+     * @return string
+     */
+    public function getAvailableBalance(string $iban)
+    {
+        $info = $this->getAccountIDAndBankIDFromIBAN($iban);
+        $accountID = $info['id'];
+        $swift = $info['bank_id'];
+        $views = $this->getViews($swift);
+        $views = array_get($views, 'views');
+        $views = array_first($views);
+        $viewID = $views['id'];
+        $account = $this->getAccount($swift, $accountID, $viewID);
+        $balance = array_get($account, 'balance.amount', 'Unknown');
+        return $balance;
+    }
+
+    /**
+     * @param string $iban
+     * @return string
+     */
+    public function getAvailableBalanceCurrency(string $iban)
+    {
+        $info = $this->getAccountIDAndBankIDFromIBAN($iban);
+        $accountID = $info['id'];
+        $swift = $info['bank_id'];
+        $views = $this->getViews($swift);
+        $views = array_get($views, 'views');
+        $views = array_first($views);
+        $viewID = $views['id'];
+        $account = $this->getAccount($swift, $accountID, $viewID);
+        $currency = array_get($account, 'balance.currency', 'Unknown');
+        return $currency;
     }
 
     public function postMakeTransaction(string $swiftBankCode, string $accountID)
