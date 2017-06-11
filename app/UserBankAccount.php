@@ -37,7 +37,7 @@ class UserBankAccount extends Model
 
     protected $guarded = [];
 
-    protected function user()
+    public function user()
     {
         $this->belongsTo(User::class);
     }

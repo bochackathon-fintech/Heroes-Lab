@@ -27,7 +27,7 @@ class FirstTimeConversation extends Conversation
 
         $this->say('We are close to the end.One last question...');
         $question = Question::create('What is your IBAN number?');
-        $this->ask($question, function (Answer $answer) use ($bankAccount, $question) {
+        $this->ask($question, function (Answer $answer) use ($bankAccount, $question, $user) {
             $bankAccount->iban = $answer->getText();
             //get account
             $api = new APIHelper(env('BOC_AUTH_PROVIDER_NAME'), env('BOC_AUTH_ID'), env('BOC_TOKEN'));
@@ -36,7 +36,9 @@ class FirstTimeConversation extends Conversation
                 $info = $api->getAccountIDAndBankIDFromIBAN($answer->getText());
                 $bankAccount->swift = $info['bank_id'];
                 $bankAccount->account_id = $info['id'];
+                $bankAccount->user()->associate($user);
                 $bankAccount->save();
+
             } catch (Exception $exception) {
                 Log::error($exception);
                 $this->say('Sorry your IBAN number is incorrect.Try again');
