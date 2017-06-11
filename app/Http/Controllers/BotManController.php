@@ -55,7 +55,7 @@ class BotManController extends Controller
                     Button::create('Yes')->value('yes'),
                     Button::create('No')->value('no'),
                 ]);
-            $this->ask($question, function (Answer $answer) use ($botman) {
+            $botman->ask($question, function (Answer $answer) use ($botman) {
                 if ($answer->getValue() === 'yes') {
                     $botman->startConversation(new FirstTimeConversation($botman, $botman->getMessage()->getChannel()));
                 } else {
