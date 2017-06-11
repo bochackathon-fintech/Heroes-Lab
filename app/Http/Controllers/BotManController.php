@@ -6,6 +6,7 @@ use App\Conversations\FirstTimeConversation;
 use App\Conversations\StartConversation;
 use App\Custom\EnrichMessage;
 use App\User;
+use GuzzleHttp\Client;
 use Mpociot\BotMan\Answer;
 use Mpociot\BotMan\BotMan;
 use Mpociot\BotMan\Button;
@@ -99,7 +100,7 @@ class BotManController extends Controller
     
     
     public static function checkinterledger() {
-        $client = new \GuzzleHttp\Client(['base_uri' => 'https://usdledger.online/api/users', array(
+        $client = new Client(['base_uri' => 'https://usdledger.online/api/users', array(
             'Authorization' => "Basic YWRtaW46YWRtaW4="
             
         )]);
@@ -120,7 +121,7 @@ class BotManController extends Controller
     
     public function createTransfer() {
         // Create a client with a base URI
-        $client = new \GuzzleHttp\Client(['base_uri' => 'usdledger.online:1337', array(
+        $client = new Client(['base_uri' => 'usdledger.online:1337', array(
             'content-type' => 'application/json'
         )]);
 
