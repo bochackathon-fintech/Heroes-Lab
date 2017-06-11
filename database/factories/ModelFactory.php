@@ -46,6 +46,8 @@ $factory->define(App\Transaction::class, function (Faker\Generator $faker) {
         },
         'amount' => $faker->randomNumber(8),
         'balance' => $faker->numberBetween(),
+        'status' => $faker->randomElement(['pending', 'completed']),
+        'verification_number' => $faker->uuid,
         'created_at' => $faker->dateTimeThisYear,
         'updated_at' => $faker->dateTimeThisYear,
     ];
