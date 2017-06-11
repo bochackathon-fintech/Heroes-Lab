@@ -47,6 +47,7 @@ class BotManController extends Controller
             $bot->startConversation(new FirstTimeConversation($bot, $bot->getMessage()->getChannel()));
         })->middleware(new EnrichMessage());
 
+        //ask user to give information
         if (User::where('user_id', $botman->getUser()->getId())->count() === 0) {
             $question = Question::create('I haven`t met you yet.Would you like to give me some information?')
                 ->fallback('I didn`t catch that')
@@ -61,6 +62,9 @@ class BotManController extends Controller
                     $botman->say('Sorry to hear that :(', $botman->getMessage()->getChannel());
                 }
             });
+        } else {
+            //login user automatically
+            \Auth::login(User::where('user_id', $botman->getUser()->getId())->first());
         }
 
 
