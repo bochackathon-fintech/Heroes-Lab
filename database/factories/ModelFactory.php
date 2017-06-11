@@ -41,9 +41,7 @@ $factory->define(App\Transaction::class, function (Faker\Generator $faker) {
             return factory(App\UserBankAccount::class)->create()->id;
         },
         'category' => $faker->randomElement(['Food', 'Leisure', 'Clothing', 'Gas', 'Electronics']),
-        'to_user_id' => function () {
-            return factory(App\User::class)->create()->id;
-        },
+        'interledger_user' => $faker->userName,
         'amount' => $faker->numberBetween(1, 200),
         'balance' => $faker->numberBetween(1, 2000),
         'status' => $faker->randomElement(['pending', 'completed']),
