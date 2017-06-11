@@ -125,5 +125,15 @@ class BotManController extends Controller
 
         echo $response->getBody();
     }
+    
+    public function getUser() {
+        $client = new GuzzleHttp\Client(['base_uri' => 'https://usdledger.online/ledger/accounts/alice', array(
+            'content-type' => 'application/json'
+        )]);
+        $response = $client->request('GET', '/makeTransfer', [
+
+        ]);
+        print_r($response->getBody());
+    }
 
 }
