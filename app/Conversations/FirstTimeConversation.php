@@ -37,6 +37,7 @@ class FirstTimeConversation extends Conversation
                 $info = $api->getAccountIDAndBankIDFromIBAN($iban);
                 $bankAccount->swift = $info['bank_id'];
                 $bankAccount->account_id = $info['id'];
+                $user->save();
                 $bankAccount->user_id = $user->id;
                 $bankAccount->balance = $api->getAvailableBalance($iban);
                 $bankAccount->save();
