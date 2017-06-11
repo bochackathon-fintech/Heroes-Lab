@@ -22,6 +22,7 @@ class UserTransactions extends Migration
             $table->foreign('to_user_id')->references('id')->on('users');
             $table->decimal('amount', 15, 2);
             $table->decimal('balance', 15, 2);
+            $table->string('status');
             $table->timestamps();
         });
     }
