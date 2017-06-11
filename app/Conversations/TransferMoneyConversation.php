@@ -8,7 +8,7 @@
 
 namespace App\Conversations;
 
-
+use GuzzleHttp\Client;
 class TransferMoneyConversation
 {
     public static function checkbalance($balance, $available_balance) {
@@ -45,7 +45,7 @@ class TransferMoneyConversation
 
     public static function createTransfer($balance, $interledger) {
         // Create a client with a base URI
-        $client = new GuzzleHttp\Client(['base_uri' => 'usdledger.online:1337', array(
+        $client = new Client(['base_uri' => 'usdledger.online:1337', array(
             'content-type' => 'application/json'
         )]);
 
