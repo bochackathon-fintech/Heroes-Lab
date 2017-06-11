@@ -6,6 +6,8 @@ namespace App\Conversations;
 use App\Helpers\APIHelper;
 use App\User;
 use App\UserBankAccount;
+use Exception;
+use Log;
 use Mpociot\BotMan\Answer;
 use Mpociot\BotMan\Button;
 use Mpociot\BotMan\Conversation;
@@ -24,14 +26,23 @@ class FirstTimeConversation extends Conversation
         $bankAccount->auth_token_key = env('BOC_TOKEN');
 
         $this->say('We are close to the end.One last question...');
-        $this->ask('What is your IBAN number?', function (Answer $answer) use ($bankAccount) {
+        $question = Question::create('What is your IBAN number?');
+        $this->ask($question, function (Answer $answer) use ($bankAccount, $question) {
             $bankAccount->iban = $answer->getText();
             //get account
             $api = new APIHelper(env('BOC_AUTH_PROVIDER_NAME'), env('BOC_AUTH_ID'), env('BOC_TOKEN'));
-            $info = $api->getAccountIDAndBankIDFromIBAN($answer->getText());
-            $bankAccount->swift = $info['bank_id'];
-            $bankAccount->account_id = $info['id'];
-            $bankAccount->save();
+            try {
+                //GR8012345678901238126985255
+                $info = $api->getAccountIDAndBankIDFromIBAN($answer->getText());
+                $bankAccount->swift = $info['bank_id'];
+                $bankAccount->account_id = $info['id'];
+                $bankAccount->save();
+            } catch (Exception $exception) {
+                Log::error($exception);
+                $this->say('Sorry your IBAN number is incorrect.Try again');
+                $this->repeat($question);
+            }
+
         });
 
         //get balance

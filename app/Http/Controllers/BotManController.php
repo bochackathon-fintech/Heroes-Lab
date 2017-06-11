@@ -38,7 +38,7 @@ class BotManController extends Controller
             $bot->reply('My name is Metis.Nice to meet you!');
         });
 
-        $botman->hears('start|begin|help|commands', function (BotMan $bot) {
+        $botman->hears('start|begin', function (BotMan $bot) {
             $bot->startConversation(new StartConversation());
         })->middleware(new EnrichMessage());
 
