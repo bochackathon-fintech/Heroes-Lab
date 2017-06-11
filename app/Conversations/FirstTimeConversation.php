@@ -33,10 +33,13 @@ class FirstTimeConversation extends Conversation
             $api = new APIHelper(env('BOC_AUTH_PROVIDER_NAME'), env('BOC_AUTH_ID'), env('BOC_TOKEN'));
             try {
                 //GR8012345678901238126985255
-                $info = $api->getAccountIDAndBankIDFromIBAN($answer->getValue());
+                $iban = $answer->getText();
+                $info = $api->getAccountIDAndBankIDFromIBAN($iban);
                 $bankAccount->swift = $info['bank_id'];
                 $bankAccount->account_id = $info['id'];
                 $bankAccount->user_id = $user->id;
+                $bankAccount->balance = $api->getAvailableBalance($iban);
+                $bankAccount->save();
 
             } catch (Exception $exception) {
                 Log::error($exception);
@@ -46,8 +49,6 @@ class FirstTimeConversation extends Conversation
 
         });
 
-        //get balance
-        //$balance = $api->getViews();
 
         //save bank account and associate with user
         if ($user->username == null) {
@@ -57,7 +58,6 @@ class FirstTimeConversation extends Conversation
         $user->interledger_password = 1234;
         $user->is_locked = 0;
         $user->save();
-        $bankAccount->save();
         $user->bankAccounts()->save($bankAccount);
 
         $this->say('That`s it! Thank you :).You are now connected with your Financial Account');
