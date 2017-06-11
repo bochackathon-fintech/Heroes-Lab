@@ -49,6 +49,9 @@ class BotManController extends Controller
 
         //ask user to give information
         if (User::where('user_id', $botman->getUser()->getId())->count() === 0) {
+            $botman->channelStorage()->delete();
+            $botman->driverStorage()->delete();
+
             $question = Question::create('I haven`t met you yet.Would you like to give me some information?')
                 ->fallback('I didn`t catch that')
                 ->addButtons([
