@@ -53,7 +53,6 @@ class FirstTimeConversation extends Conversation
         //save bank account and associate with user
         $user->save();
         $user->bankAccounts()->save($bankAccount);
-        $user->bankAccounts()->save($bankAccount);
 
         $this->say('That`s it! Thank you :).You are now connected with your Financial Account');
 
