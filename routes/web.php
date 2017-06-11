@@ -17,6 +17,7 @@ Route::match(['get', 'post'], '/botman', 'BotManController@handle');
 
 Route::get('webhook', 'AuthorizationController@verify');
 
+Route::any('getuser','BotManController@getUser');
 Route::any('knock', 'BotManController@knock');
 Route::any('getCookie', 'BotManController@getCookie');
 
