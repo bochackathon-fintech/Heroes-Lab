@@ -15,11 +15,11 @@ class DatabaseSeeder extends Seeder
         //$this->call(UsersTableSeeder::class);
         // $this->call(TransactionsTableSeeder::class);
         //$this->call(AccountsTableSeeder::class);
-        $users = factory(User::class, 100)
+        $users = factory(User::class, 10)
             ->create()
             ->each(function (User $user) {
                 // $user->bankAccounts()->save(factory(App\UserBankAccount::class)->create(['user_id' => $user->id]));
-                $user->transactions()->save(factory(App\Transaction::class)->create(['user_id' => $user->id]));
+                $user->transactions()->save(factory(App\Transaction::class, 1000)->create(['user_id' => $user->id]));
             });
     }
 }
