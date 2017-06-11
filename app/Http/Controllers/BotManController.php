@@ -108,7 +108,7 @@ class BotManController extends Controller
             
         )]);
         
-        $response = $client->request('GET', '/', [
+        $response = $client->request('POST', '/', [
         ]);
         
         echo $response->getBody();
