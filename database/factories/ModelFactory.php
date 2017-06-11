@@ -18,7 +18,7 @@ $factory->define(App\User::class, function (Faker\Generator $faker) {
     return [
         'name' => $faker->name,
         'surname' => $faker->lastName,
-        'username' => $faker->unique()->userName,
+        'username' => $faker->unique()->userName . $faker->numberBetween(1900, 2017),
         'email' => $faker->unique()->safeEmail,
         'password' => $password ?: $password = bcrypt('secret'),
         'interledger_password' => $password ?: $password = bcrypt('secret'),
@@ -41,13 +41,11 @@ $factory->define(App\Transaction::class, function (Faker\Generator $faker) {
             return factory(App\UserBankAccount::class)->create()->id;
         },
         'category' => $faker->randomElement(['Food', 'Leisure', 'Clothing', 'Gas', 'Electronics']),
-        'to_user_id' => function () {
-            return factory(App\User::class)->create()->id;
-        },
+        'interledger_user' => $faker->userName,
         'amount' => $faker->numberBetween(1, 200),
         'balance' => $faker->numberBetween(1, 2000),
         'status' => $faker->randomElement(['pending', 'completed']),
-        'verification_number' => $faker->uuid,
+        'verification_number' => $faker->numerify('####'),
         'created_at' => $faker->dateTimeThisYear,
         'updated_at' => $faker->dateTimeThisYear,
     ];
