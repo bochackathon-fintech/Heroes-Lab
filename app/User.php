@@ -51,12 +51,12 @@ class User extends Authenticatable
 
     protected $table = 'users';
 
-    protected function bankAccounts()
+    public function bankAccounts()
     {
-        return $this->hasMany(\BankAccount::class);
+        return $this->hasMany(UserBankAccount::class);
     }
 
-    protected function transactions()
+    public function transactions()
     {
         return $this->hasMany(Transaction::class);
     }
