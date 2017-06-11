@@ -36,10 +36,13 @@ class FirstTimeConversation extends Conversation
         $bankAccount->account_id = $info['id'];
 
         //get balance
+        //$balance = $api->getViews();
 
         //save bank account and associate with user
         $bankAccount->save();
-        $this->currentUser->accounts->save($bankAccount);
+        $this->currentUser->save();
+        $this->currentUser->bankAccounts()->save($bankAccount);
+        $this->currentUser->bankAccounts()->save($bankAccount);
     }
 
     public function askForPassword()
@@ -110,15 +113,7 @@ class FirstTimeConversation extends Conversation
         $user = $this->bot->getUser();
         $this->say('Hello there:) Welcome to Metis.I can help you with your Financial Account but first i need some information from you.');
         $this->say('Your name is ' . $user->getFirstName() . ' ' . $user->getLastName());
-
-
-        $bot->say('Hello ' . $user->getFirstName() . ' ' . $user->getLastName(), $this->channel);
-        $bot->say('Your username is: ' . $user->getUsername());
-        $bot->say('Your ID is: ' . $user->getId());
-        $this->ask('Hey Kostis How can i help you? :) <br /> Here some of my skills: 1: transfer money', function (Answer $answer) {
-            $this->say('bravo');
-
-        });
+        $this->askForName();
 
         // $question = Question::create("Hello :).How can i help you ?")
         //     ->fallback('Unable to ask question')
