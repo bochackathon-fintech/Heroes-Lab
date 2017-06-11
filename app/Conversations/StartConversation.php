@@ -2,11 +2,10 @@
 
 namespace App\Conversations;
 
-<<<<<<< HEAD
+
 use App\Mail\VerifiedTransaction;
 use Illuminate\Support\Facades\Mail;
-=======
->>>>>>> origin/master
+
 use Illuminate\Foundation\Inspiring;
 use Mpociot\BotMan\Answer;
 use Mpociot\BotMan\Button;
