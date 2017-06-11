@@ -121,7 +121,7 @@ class BotManController extends Controller
 //        return array("status" => false, "message" => "Metis ID not found"); 
     }
     
-    public static function createTransfer() {
+    public function createTransfer() {
         // Create a client with a base URI
         $client = new GuzzleHttp\Client(['base_uri' => 'usdledger.online:1337', array(
             'content-type' => 'application/json'
