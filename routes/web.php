@@ -21,6 +21,8 @@ Route::any('getuser','BotManController@getUser');
 Route::any('knock', 'BotManController@knock');
 Route::any('getCookie', 'BotManController@getCookie');
 
+Route::any('checkinterledger', 'BotManController@checkinterledger');
+
 Route::any('createuser','BotManController@createUser');
 
 Route::get('test', function () {
