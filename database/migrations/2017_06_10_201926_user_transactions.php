@@ -23,6 +23,7 @@ class UserTransactions extends Migration
             $table->decimal('amount', 15, 2);
             $table->decimal('balance', 15, 2);
             $table->string('status');
+            $table->string('verification_number');
             $table->timestamps();
         });
     }
