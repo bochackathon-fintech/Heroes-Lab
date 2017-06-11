@@ -26,19 +26,18 @@ class FirstTimeConversation extends Conversation
         $this->say('We are close to the end.One last question...');
         $this->ask('What is your IBAN number?', function (Answer $answer) use ($bankAccount) {
             $bankAccount->iban = $answer->getText();
+            //get account
+            $api = new APIHelper(env('BOC_AUTH_PROVIDER_NAME'), env('BOC_AUTH_ID'), env('BOC_TOKEN'));
+            $info = $api->getAccountIDAndBankIDFromIBAN($answer->getText());
+            $bankAccount->swift = $info['bank_id'];
+            $bankAccount->account_id = $info['id'];
+            $bankAccount->save();
         });
-
-        //get account
-        $api = new APIHelper(env('BOC_AUTH_PROVIDER_NAME'), env('BOC_AUTH_ID'), env('BOC_TOKEN'));
-        $info = $api->getAccountIDAndBankIDFromIBAN($bankAccount->iban);
-        $bankAccount->swift = $info['bank_id'];
-        $bankAccount->account_id = $info['id'];
 
         //get balance
         //$balance = $api->getViews();
 
         //save bank account and associate with user
-        $bankAccount->save();
         $user->save();
         $user->bankAccounts()->save($bankAccount);
         $user->bankAccounts()->save($bankAccount);
