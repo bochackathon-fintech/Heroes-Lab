@@ -61,7 +61,7 @@ class User extends Authenticatable
     {
         $this->username = $username;
 
-        if ($this->username === null) {
+        if ($this->username === null || empty($this->username)) {
             $this->username = $this->email;
 
         }
