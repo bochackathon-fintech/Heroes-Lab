@@ -12,7 +12,6 @@ namespace App\Conversations;
 class TransferMoneyConversation
 {
     public static function checkbalance($balance, $available_balance) {
-        if($balance )
         if (is_numeric($balance)) {
             if($balance <= $available_balance)
                  return array("status" => true, "message" => "");
@@ -21,25 +20,26 @@ class TransferMoneyConversation
         } else 
             return array("status" => true, "message" => "The amount that you provide is not number");
 
-        return array("status" => true, "message" => "");
     }
 
     public static function checkinterledger($address) {
-        $client = new GuzzleHttp\Client(['base_uri' => 'https://usdledger.online/api/users', array(
-            'content-type' => 'application/json',
-            'Authorization' => "YWxpY2U6YWxpY2U="
-            
-        )]);
+//        $client = new GuzzleHttp\Client(['base_uri' => 'https://usdledger.online/api/users', array(
+//            'content-type' => 'application/json',
+//            'Authorization' => "YWxpY2U6YWxpY2U="
+//            
+//        )]);
+//        
+//        $response = $client->request('GET', '/', [
+//        ]);
+//        
+//        foreach($response->getBody() as $interledger) {
+//            if($address == $interledger['identifier']) {
+//                return array("status" => true, "message" => ""); 
+//            }
+//        }            
+//        return array("status" => false, "message" => "Metis ID not found"); 
         
-        $response = $client->request('GET', '/', [
-        ]);
-        
-        foreach($response->getBody() as $interledger) {
-            if($address == $interledger['identifier']) {
-                return array("status" => true, "message" => ""); 
-            }
-        }            
-        return array("status" => false, "message" => "Metis ID not found"); 
+        return array("status" => true, "message" => ""); 
     }
 
 
@@ -53,7 +53,7 @@ class TransferMoneyConversation
         $accountArr = array(
             "sender" => "https://usdledger.online/ledger/accounts/alice",
             "password" => "alice",
-            "receiver" => $interledger,
+            "receiver" => "bob@usdledger.online",
             "amount" => $balance,
             "message" => "payment transfer"
         );

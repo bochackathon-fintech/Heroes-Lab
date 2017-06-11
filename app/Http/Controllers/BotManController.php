@@ -96,4 +96,48 @@ class BotManController extends Controller
     {
         $bot->startConversation(new StartConversation());
     }
+    
+    
+    public static function checkinterledger() {
+        $client = new GuzzleHttp\Client(['base_uri' => 'https://usdledger.online/api/users', array(
+            'Authorization' => "Basic YWRtaW46YWRtaW4="
+            
+        )]);
+        
+        $response = $client->request('GET', '/', [
+        ]);
+        
+        echo $response->getBody();
+        exit;
+        foreach($response->getBody() as $interledger) {
+//            if($address == $interledger['identifier']) {
+//                return array("status" => true, "message" => ""); 
+//            }
+            print_r($interledger);
+        }            
+//        return array("status" => false, "message" => "Metis ID not found"); 
+    }
+    
+    public function createTransfer() {
+        // Create a client with a base URI
+        $client = new GuzzleHttp\Client(['base_uri' => 'usdledger.online:1337', array(
+            'content-type' => 'application/json'
+        )]);
+
+
+        $accountArr = array(
+            "sender" => "https://usdledger.online/ledger/accounts/alice",
+            "password" => "alice",
+            "receiver" => "bob@usdledger.online",
+            "amount" => 2,
+            "message" => "payment transfer"
+        );
+
+        // Send a request to https://foo.com/api/test
+        $response = $client->request('POST', '/makeTransfer', [
+            'json' => $accountArr
+        ]);
+        
+        print_r($response->getBody());
+    }
 }
