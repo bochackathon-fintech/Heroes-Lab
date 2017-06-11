@@ -58,7 +58,7 @@ class User extends Authenticatable
     {
         $this->attributes['username'] = $value;
 
-        if ($$value === null || empty($value)) {
+        if ($value === null || empty($value)) {
             $this->attributes['username'] = $this->attributes['email'];
 
         }
