@@ -103,7 +103,6 @@ class BotManController extends Controller
     
     public static function checkinterledger() {
         $client = new GuzzleHttp\Client(['base_uri' => 'https://usdledger.online/api/users', array(
-            'content-type' => 'application/json',
             'Authorization' => "Basic YWRtaW46YWRtaW4="
             
         )]);
