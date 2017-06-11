@@ -49,7 +49,7 @@ class StartConversation extends Conversation
                         $balance = "";
                         $checkbalance = "";
                         $this->ask('Your available balance is ' . $available_balance . '. How much you would like to transfer?', function (Answer $answer) use ($interledger, $balance, $available_balance, $question) {
-                            $checkbalance = TransferMoney::checkBalance($answer->getText(), $available_balance);
+                            $checkbalance = TransferMoneyConversation::checkBalance($answer->getText(), $available_balance);
                             if (!$checkbalance['status']) {
                                 $this->say($checkbalance['message']);
                                 $this->repeat($question);
@@ -63,13 +63,13 @@ class StartConversation extends Conversation
                                     ->addButton(ElementButton::create('Other')->value('Other'));
                             $this->ask($occasion, function (Answer $answer) use ($question, $balance, $interledger, $checkbalance) {
                                if ($answer->isInteractiveMessageReply()) {
-                                    $addCategory = TransferMoney::createCategory($answer->getValue());
+                                   $addCategory = TransferMoneyConversation::createCategory($answer->getValue());
                                     if (!$addCategory['status']) {
                                         $this->say($addCategory['message']);
                                         $this->repeat($question);
                                     }
                                 $this->ask("Great, What's the private metis ID?", function (Answer $answer) use ($interledger, $checkbalance, $question, $balance) {
-                                    $checkinterledger = TransferMoney::checkInterledger($answer->getText());
+                                    $checkinterledger = TransferMoneyConversation::checkInterledger($answer->getText());
                                     if (!$checkinterledger['status']) {
                                         $this->say($checkbalance['message']);
                                         $this->repeat($question);
@@ -86,7 +86,7 @@ class StartConversation extends Conversation
                                     $this->ask($summary, function (Answer $answer) use ($question, $balance, $interledger) {
                                         if ($answer->isInteractiveMessageReply()) {
                                             if ($answer->getValue() == 'Y') {
-                                                $createTransfer = TransferMoney::createTransfer($balance, $interledger);
+                                                $createTransfer = TransferMoneyConversation::createTransfer($balance, $interledger);
                                                 if (!$createTransfer['status']) {
                                                     $this->say($createTransfer['message']);
                                                     $this->repeat($question);

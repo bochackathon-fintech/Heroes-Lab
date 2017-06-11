@@ -9,7 +9,7 @@
 namespace App\Conversations;
 
 
-class TransferMoney
+class TransferMoneyConversation
 {
     public static function checkbalance($balance, $available_balance) {
 

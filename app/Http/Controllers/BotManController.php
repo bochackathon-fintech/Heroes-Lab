@@ -32,7 +32,7 @@ class BotManController extends Controller
 
         //user clicked get started button the first time
         $botman->hears(config('services.botman.facebook_start_button_payload'), function (BotMan $bot) {
-            $bot->startConversation(new FirstTimeConversation);
+            $bot->startConversation(new FirstTimeConversation($bot, $bot->getMessage()->getChannel()));
         })->middleware(new EnrichMessage());
 
 
@@ -51,7 +51,8 @@ class BotManController extends Controller
     }
 
 
-    public function getCookie() {
+    public function getCookie()
+    {
         $client = new GuzzleHttp\Client(['base_uri' => 'https://usdledger.online/api/auth/login', array(
             'content-type' => 'application/json',
         )]);
@@ -98,7 +99,8 @@ class BotManController extends Controller
         print_r(json_decode($response->getBody(), true));
     }
 
-    public function createUser() {
+    public function createUser()
+    {
         $client = new GuzzleHttp\Client(['base_uri' => 'https://usdledger.online/ledger/users/kostis', array(
             'content-type' => 'application/json',
         )]);

@@ -23,7 +23,8 @@ class UserBankAccounts extends Migration
             $table->string('auth_provider_name')->unique();
             $table->string('auth_id')->unique();
             $table->string('auth_token_key')->unique();
-            $table->decimal('balance', 15, 2);
+            $table->decimal('balance', 15, 2)->nullable();
+            $table->timestamps();
         });
     }
 
