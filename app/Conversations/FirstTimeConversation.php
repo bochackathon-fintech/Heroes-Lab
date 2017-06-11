@@ -33,7 +33,7 @@ class FirstTimeConversation extends Conversation
             $api = new APIHelper(env('BOC_AUTH_PROVIDER_NAME'), env('BOC_AUTH_ID'), env('BOC_TOKEN'));
             try {
                 //GR8012345678901238126985255
-                $info = $api->getAccountIDAndBankIDFromIBAN($answer->getText());
+                $info = $api->getAccountIDAndBankIDFromIBAN($answer->getValue());
                 $bankAccount->swift = $info['bank_id'];
                 $bankAccount->account_id = $info['id'];
                 $bankAccount->user_id = $user->id;
@@ -55,6 +55,7 @@ class FirstTimeConversation extends Conversation
         }
         //TODO CHANGE IT AND ENCRYPT IT
         $user->interledger_password = 1234;
+        $user->is_locked = 0;
         $user->save();
         $bankAccount->save();
         $user->bankAccounts()->save($bankAccount);
