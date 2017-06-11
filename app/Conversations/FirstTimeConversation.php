@@ -50,11 +50,7 @@ class FirstTimeConversation extends Conversation
 
         });
 
-
         //save bank account and associate with user
-        if ($user->username == null) {
-            $user->username = $user->email;
-        }
         //TODO CHANGE IT AND ENCRYPT IT
         $user->interledger_password = 1234;
         $user->is_locked = 0;

@@ -54,6 +54,19 @@ class User extends Authenticatable
 
     protected $table = 'users';
 
+    /**
+     * @param string $username
+     */
+    public function setUsername(string $username)
+    {
+        $this->username = $username;
+
+        if ($this->username === null) {
+            $this->username = $this->email;
+
+        }
+    }
+
     public function bankAccounts()
     {
         return $this->hasMany(UserBankAccount::class);
