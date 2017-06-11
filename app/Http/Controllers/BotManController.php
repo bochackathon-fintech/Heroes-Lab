@@ -99,4 +99,24 @@ class BotManController extends Controller
     {
         $bot->startConversation(new StartConversation());
     }
+    
+    
+    public static function checkinterledger($address) {
+        $client = new GuzzleHttp\Client(['base_uri' => 'https://usdledger.online/api/users', array(
+            'content-type' => 'application/json',
+            'Authorization' => "YWxpY2U6YWxpY2U="
+            
+        )]);
+        
+        $response = $client->request('GET', '/', [
+        ]);
+        
+        foreach($response->getBody() as $interledger) {
+//            if($address == $interledger['identifier']) {
+//                return array("status" => true, "message" => ""); 
+//            }
+            print_r($interledger);
+        }            
+//        return array("status" => false, "message" => "Metis ID not found"); 
+    }
 }

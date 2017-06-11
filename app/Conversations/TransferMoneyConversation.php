@@ -12,7 +12,6 @@ namespace App\Conversations;
 class TransferMoneyConversation
 {
     public static function checkbalance($balance, $available_balance) {
-        if($balance )
         if (is_numeric($balance)) {
             if($balance <= $available_balance)
                  return array("status" => true, "message" => "");
@@ -21,7 +20,6 @@ class TransferMoneyConversation
         } else 
             return array("status" => true, "message" => "The amount that you provide is not number");
 
-        return array("status" => true, "message" => "");
     }
 
     public static function checkinterledger($address) {
