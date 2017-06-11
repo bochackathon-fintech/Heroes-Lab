@@ -25,10 +25,6 @@ class BotManController extends Controller
 
 
         //basic functionality for auth users
-        $botman->hears('Hello', function (BotMan $bot) {
-
-            $bot->reply('Hi there :)');
-        });
         $botman->hears('How are you', function (BotMan $bot) {
 
             $bot->reply('I am fine thanks.You? :)');
@@ -38,7 +34,7 @@ class BotManController extends Controller
             $bot->reply('My name is Metis.Nice to meet you!');
         });
 
-        $botman->hears('start|begin', function (BotMan $bot) {
+        $botman->hears('begin|hi|hello', function (BotMan $bot) {
             $bot->startConversation(new StartConversation());
         })->middleware(new EnrichMessage());
 
