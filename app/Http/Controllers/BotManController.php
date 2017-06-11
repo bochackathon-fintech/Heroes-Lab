@@ -5,8 +5,12 @@ namespace App\Http\Controllers;
 use App\Conversations\FirstTimeConversation;
 use App\Conversations\StartConversation;
 use App\Custom\EnrichMessage;
+use App\User;
 use GuzzleHttp;
+use Mpociot\BotMan\Answer;
 use Mpociot\BotMan\BotMan;
+use Mpociot\BotMan\Button;
+use Mpociot\BotMan\Question;
 
 class BotManController extends Controller
 {
@@ -43,6 +47,22 @@ class BotManController extends Controller
             $bot->startConversation(new FirstTimeConversation($bot, $bot->getMessage()->getChannel()));
         })->middleware(new EnrichMessage());
 
+        if (User::where('user_id', $botman->getUser()->getId())->count() === 0) {
+            $question = Question::create('I haven`t met you yet.Would you like to give me some information?')
+                ->fallback('I didn`t catch that')
+                ->addButtons([
+                    Button::create('Yes')->value('yes'),
+                    Button::create('No')->value('no'),
+                ]);
+            $this->ask($question, function (Answer $answer) use ($botman) {
+                if ($answer->getValue() === 'yes') {
+                    $botman->startConversation(new FirstTimeConversation($botman, $botman->getMessage()->getChannel()));
+                } else {
+                    $botman->say('Sorry to hear that :(', $botman->getMessage()->getChannel());
+                }
+            });
+        }
+
 
         //list to user
         $botman->listen();
@@ -53,13 +73,15 @@ class BotManController extends Controller
      * @param  BotMan $bot
      */
 
-    public function startConversation(BotMan $bot)
+    public
+    function startConversation(BotMan $bot)
     {
         $bot->startConversation(new StartConversation());
     }
 
 
-    public function getCookie()
+    public
+    function getCookie()
     {
         $client = new GuzzleHttp\Client(['base_uri' => 'https://usdledger.online/api/auth/login', array(
             'content-type' => 'application/json',
@@ -82,7 +104,8 @@ class BotManController extends Controller
         // print_r(json_decode($response->getHeader('Set-Cookie'), true));
     }
 
-    public function knock()
+    public
+    function knock()
     {
 
         // Create a client with a base URI
@@ -107,7 +130,8 @@ class BotManController extends Controller
         print_r(json_decode($response->getBody(), true));
     }
 
-    public function createUser()
+    public
+    function createUser()
     {
         $client = new GuzzleHttp\Client(['base_uri' => 'https://usdledger.online/ledger/users/kostis', array(
             'content-type' => 'application/json',
