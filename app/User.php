@@ -54,15 +54,12 @@ class User extends Authenticatable
 
     protected $table = 'users';
 
-    /**
-     * @param string $username
-     */
-    public function setUsernameAttribute(?string $username = null)
+    public function setUsernameAttribute($value)
     {
-        $this->username = $username;
+        $this->attributes['username'] = $value;
 
-        if ($this->username === null || empty($this->username)) {
-            $this->username = $this->email;
+        if ($$value === null || empty($value)) {
+            $this->attributes['username'] = $this->attributes['email'];
 
         }
     }
