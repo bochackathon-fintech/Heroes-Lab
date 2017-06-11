@@ -14,12 +14,8 @@ use Mpociot\BotMan\Question;
 
 class FirstTimeConversation extends Conversation
 {
-    /**
-     * @var User
-     */
-    private $currentUser;
 
-    public function askForBankAccountDetails()
+    public function askForBankAccountDetails(User $user)
     {
         $bankAccount = new UserBankAccount();
         //TODO INTEGRATION WHEN AVAILABLE
@@ -43,42 +39,40 @@ class FirstTimeConversation extends Conversation
 
         //save bank account and associate with user
         $bankAccount->save();
-        $this->currentUser->save();
-        $this->currentUser->bankAccounts()->save($bankAccount);
-        $this->currentUser->bankAccounts()->save($bankAccount);
+        $user->save();
+        $user->bankAccounts()->save($bankAccount);
+        $user->bankAccounts()->save($bankAccount);
 
         $this->say('That`s it! Thank you :).You are now connected with your Financial Account');
 
     }
 
-    public function askForPassword()
+    public function askForPassword(User $user)
     {
         $this->say('For security reasons we need to set a strong password for password recovery and locking your account');
-        $this->ask('What is your password?', function (Answer $answer) {
-            $this->currentUser->password = encrypt($answer->getText());
-            $this->askForBankAccountDetails();
+        $this->ask('What is your password?', function (Answer $answer) use ($user) {
+            $user->password = encrypt($answer->getText());
+            $this->askForBankAccountDetails($user);
 
         });
 
     }
 
-    public function askForEmail()
+    public function askForEmail(User $user)
     {
         $this->say('For security reasons we need your email');
-        $this->ask('What is your email?', function (Answer $answer) {
+        $this->ask('What is your email?', function (Answer $answer) use ($user) {
             $email = $answer->getText();
-            $this->currentUser->email = $email;
+            $user->email = $email;
             $this->bot->userStorage()->save(['email' => $email]);
-            $this->askForPassword();
+            $this->askForPassword($user);
 
         });
 
     }
 
-    public function askForName()
+    public function askForName(User $user)
     {
-
-        $this->currentUser = new User();
 
         $question = Question::create('Is that correct?')
             ->fallback('I didn`t catch that')
@@ -87,27 +81,27 @@ class FirstTimeConversation extends Conversation
                 Button::create('No')->value('no'),
             ]);
 
-        $this->ask($question, function (Answer $answer) {
+        $this->ask($question, function (Answer $answer) use ($user) {
             if ($answer->getValue() === 'yes') {
                 $this->bot->userStorage()->save(['name' => $this->bot->getUser()->getFirstName(), 'surname' => $this->bot->getUser()->getLastName()]);
-                $this->currentUser->user_id = $this->bot->getUser()->getId();
-                $this->currentUser->channel_id = $this->bot->getMessage()->getConversationIdentifier();
-                $this->currentUser->username = $this->bot->getUser()->getUsername();
-                $this->currentUser->name = $this->bot->getUser()->getFirstName();
-                $this->currentUser->surname = $this->bot->getUser()->getLastName();
+                $user->user_id = $this->bot->getUser()->getId();
+                $user->channel_id = $this->bot->getMessage()->getConversationIdentifier();
+                $user->username = $this->bot->getUser()->getUsername();
+                $user->name = $this->bot->getUser()->getFirstName();
+                $user->surname = $this->bot->getUser()->getLastName();
             } else {
-                $this->currentUser->user_id = $this->bot->getUser()->getId();
-                $this->currentUser->username = $this->bot->getUser()->getUsername();
-                $this->currentUser->channel_id = $this->bot->getMessage()->getConversationIdentifier();
+                $user->user_id = $this->bot->getUser()->getId();
+                $user->username = $this->bot->getUser()->getUsername();
+                $user->channel_id = $this->bot->getMessage()->getConversationIdentifier();
 
-                $this->ask('What is your first name?', function (Answer $answer) {
-                    $this->currentUser->name = $answer->getText();
+                $this->ask('What is your first name?', function (Answer $answer) use ($user) {
+                    $user->name = $answer->getText();
                 });
-                $this->ask('What is your last name?', function (Answer $answer) {
-                    $this->currentUser->surname = $answer->getText();
+                $this->ask('What is your last name?', function (Answer $answer) use ($user) {
+                    $user->surname = $answer->getText();
                 });
             }
-            $this->askForEmail();
+            $this->askForEmail($user);
 
         });
 
@@ -123,7 +117,7 @@ class FirstTimeConversation extends Conversation
         $user = $this->bot->getUser();
         $this->say('Hello there:) Welcome to Metis.I can help you with your Financial Account but first i need some information from you.');
         $this->say('Your name is ' . $user->getFirstName() . ' ' . $user->getLastName());
-        $this->askForName();
+        $this->askForName(new User());
 
         // $question = Question::create("Hello :).How can i help you ?")
         //     ->fallback('Unable to ask question')
