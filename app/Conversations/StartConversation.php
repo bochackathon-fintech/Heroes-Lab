@@ -70,7 +70,7 @@ class StartConversation extends Conversation
                             $this->ask($occasion, function (Answer $answer) use ($question, $amount, $available_balance, $currency) {
                                if ($answer->isInteractiveMessageReply()) {
                                     $category = $answer->getValue();
-                                    $this->ask("Great, What's the private metis ID?", function (Answer $answer) use ($question, $amount, $available_balance ,$category, $currency) {
+                                    $this->ask("Great, What's the private Metis ID?", function (Answer $answer) use ($question, $amount, $available_balance ,$category, $currency) {
                                         $checkinterledger = TransferMoneyConversation::checkInterledger($answer->getText());
                                         if (!$checkinterledger['status']) {
                                             $this->say($checkinterledger['message']);
