@@ -23,21 +23,23 @@ class TransferMoneyConversation
     }
 
     public static function checkinterledger($address) {
-        $client = new GuzzleHttp\Client(['base_uri' => 'https://usdledger.online/api/users', array(
-            'content-type' => 'application/json',
-            'Authorization' => "YWxpY2U6YWxpY2U="
-            
-        )]);
+//        $client = new GuzzleHttp\Client(['base_uri' => 'https://usdledger.online/api/users', array(
+//            'content-type' => 'application/json',
+//            'Authorization' => "YWxpY2U6YWxpY2U="
+//            
+//        )]);
+//        
+//        $response = $client->request('GET', '/', [
+//        ]);
+//        
+//        foreach($response->getBody() as $interledger) {
+//            if($address == $interledger['identifier']) {
+//                return array("status" => true, "message" => ""); 
+//            }
+//        }            
+//        return array("status" => false, "message" => "Metis ID not found"); 
         
-        $response = $client->request('GET', '/', [
-        ]);
-        
-        foreach($response->getBody() as $interledger) {
-            if($address == $interledger['identifier']) {
-                return array("status" => true, "message" => ""); 
-            }
-        }            
-        return array("status" => false, "message" => "Metis ID not found"); 
+        return array("status" => true, "message" => ""); 
     }
 
 
