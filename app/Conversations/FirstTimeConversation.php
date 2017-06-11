@@ -107,10 +107,11 @@ class FirstTimeConversation extends Conversation
 
                 $this->ask('What is your first name?', function (Answer $answer) use ($user) {
                     $user->name = $answer->getText();
+                    $this->ask('What is your last name?', function (Answer $answer) use ($user) {
+                        $user->surname = $answer->getText();
+                    });
                 });
-                $this->ask('What is your last name?', function (Answer $answer) use ($user) {
-                    $user->surname = $answer->getText();
-                });
+
             }
             $this->askForEmail($user);
 
