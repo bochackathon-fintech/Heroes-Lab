@@ -2,7 +2,7 @@
 
 namespace App\Conversations;
 
-
+use Illuminate\Support\Facades\Mail;
 use Illuminate\Foundation\Inspiring;
 use Mpociot\BotMan\Answer;
 use Mpociot\BotMan\Button;
@@ -86,12 +86,21 @@ class StartConversation extends Conversation
                                     $this->ask($summary, function (Answer $answer) use ($question, $balance, $interledger) {
                                         if ($answer->isInteractiveMessageReply()) {
                                             if ($answer->getValue() == 'Y') {
-                                                $createTransfer = TransferMoneyConversation::createTransfer($balance, $interledger);
-                                                if (!$createTransfer['status']) {
-                                                    $this->say($createTransfer['message']);
-                                                    $this->repeat($question);
-                                                }
-                                                $this->say("Your payment transfer was successful");
+                                                $this->ask("", function(Answer $answer)  use ($question, $balance, $interledger) {
+                                                    $verifiedcode = TransferMoneyConversation::checkVerifiedCode($answer->getText());
+                                                    if (!$verifiedcode['status']) {
+                                                        $this->say($verifiedcode['message']);
+                                                        $this->repeat($question);
+                                                    }
+                                                    else {
+                                                        $createTransfer = TransferMoneyConversation::createTransfer($question,$balance, $interledger);
+                                                        if (!$createTransfer['status']) {
+                                                            $this->say($createTransfer['message']);
+                                                            $this->repeat($question);
+                                                        }
+                                                        $this->say("Your payment transfer was successful");
+                                                    }
+                                                });    
                                             } else {
                                                 $this->repeat($question);
                                             }
