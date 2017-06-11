@@ -111,7 +111,7 @@ class BotManController extends Controller
         $response = $client->request('GET', '/', [
         ]);
         
-        print_r($response);
+        echo $response->getBody();
         exit;
         foreach($response->getBody() as $interledger) {
 //            if($address == $interledger['identifier']) {
