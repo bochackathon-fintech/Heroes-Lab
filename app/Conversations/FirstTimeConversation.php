@@ -77,6 +77,9 @@ class FirstTimeConversation extends Conversation
 
     public function askForName()
     {
+
+        $this->currentUser = new User();
+
         $question = Question::create('Is that correct?')
             ->fallback('I didn`t catch that')
             ->addButtons([
@@ -87,14 +90,12 @@ class FirstTimeConversation extends Conversation
         $this->ask($question, function (Answer $answer) {
             if ($answer->getValue() === 'yes') {
                 $this->bot->userStorage()->save(['name' => $this->bot->getUser()->getFirstName(), 'surname' => $this->bot->getUser()->getLastName()]);
-                $this->currentUser = new User();
                 $this->currentUser->user_id = $this->bot->getUser()->getId();
                 $this->currentUser->channel_id = $this->bot->getMessage()->getConversationIdentifier();
                 $this->currentUser->username = $this->bot->getUser()->getUsername();
                 $this->currentUser->name = $this->bot->getUser()->getFirstName();
                 $this->currentUser->surname = $this->bot->getUser()->getLastName();
             } else {
-                $this->currentUser = new User();
                 $this->currentUser->user_id = $this->bot->getUser()->getId();
                 $this->currentUser->username = $this->bot->getUser()->getUsername();
                 $this->currentUser->channel_id = $this->bot->getMessage()->getConversationIdentifier();
