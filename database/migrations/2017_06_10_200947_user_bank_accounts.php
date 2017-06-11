@@ -17,7 +17,7 @@ class UserBankAccounts extends Migration
             $table->increments('id');
             $table->integer('user_id')->unsigned();
             $table->foreign('user_id')->references('id')->on('users');
-            $table->string('bank_account_id');
+            $table->string('account_id');
             $table->string('swift')->unique();
             $table->string('iban')->unique();
             $table->string('auth_provider_name')->unique();
