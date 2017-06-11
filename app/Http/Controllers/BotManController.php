@@ -24,20 +24,6 @@ class BotManController extends Controller
         $botman->verifyServices(env('TOKEN_VERIFY'));
 
 
-        //basic functionality for auth users
-        $botman->hears('How are you', function (BotMan $bot) {
-
-            $bot->reply('I am fine thanks.You? :)');
-        });
-        $botman->hears('Whats your name?', function (BotMan $bot) {
-
-            $bot->reply('My name is Metis.Nice to meet you!');
-        });
-
-        $botman->hears('begin|hi|hello', function (BotMan $bot) {
-            $bot->startConversation(new StartConversation());
-        })->middleware(new EnrichMessage());
-
         //user clicked get started button the first time
         $botman->hears(config('services.botman.facebook_start_button_payload'), function (BotMan $bot) {
             $bot->startConversation(new FirstTimeConversation($bot, $bot->getMessage()->getChannel()));
@@ -66,6 +52,19 @@ class BotManController extends Controller
         } else {
             //login user automatically
             \Auth::login(User::where('user_id', $botman->getUser()->getId())->first());
+
+            //basic functionality for auth users
+            $botman->hears('begin|hi|hello', function (BotMan $bot) {
+                $bot->startConversation(new StartConversation());
+            })->middleware(new EnrichMessage());
+            $botman->hears('How are you', function (BotMan $bot) {
+
+                $bot->reply('I am fine thanks.You? :)');
+            });
+            $botman->hears('Whats your name?', function (BotMan $bot) {
+
+                $bot->reply('My name is Metis.Nice to meet you!');
+            });
         }
 
 
