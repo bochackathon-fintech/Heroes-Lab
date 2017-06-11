@@ -36,8 +36,7 @@ class FirstTimeConversation extends Conversation
                 $info = $api->getAccountIDAndBankIDFromIBAN($answer->getText());
                 $bankAccount->swift = $info['bank_id'];
                 $bankAccount->account_id = $info['id'];
-                $bankAccount->user()->associate($user);
-                $bankAccount->save();
+                $bankAccount->user_id = $user->id;
 
             } catch (Exception $exception) {
                 Log::error($exception);
@@ -51,7 +50,11 @@ class FirstTimeConversation extends Conversation
         //$balance = $api->getViews();
 
         //save bank account and associate with user
+        if ($user->username == null) {
+            $user->username = $user->email;
+        }
         $user->save();
+        $bankAccount->save();
         $user->bankAccounts()->save($bankAccount);
 
         $this->say('That`s it! Thank you :).You are now connected with your Financial Account');
