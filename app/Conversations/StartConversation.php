@@ -2,7 +2,6 @@
 
 namespace App\Conversations;
 
-use Illuminate\Support\Facades\Mail;
 use Illuminate\Foundation\Inspiring;
 use Mpociot\BotMan\Answer;
 use Mpociot\BotMan\Button;
@@ -24,8 +23,8 @@ class StartConversation extends Conversation
                 //Button::create('Manage my Account')->value('account'),
                 Button::create('Transfer Money')->value('transfer'),
                 Button::create('Check currency rates')->value('rates'),
-                // Button::create('Tell a joke')->value('joke'),
-                // Button::create('Give me a fancy quote')->value('quote'),
+                Button::create('Tell a joke')->value('joke'),
+                Button::create('Give me a fancy quote')->value('quote'),
             ]);
         return $this->ask($question, function (Answer $answer) use ($question) {
             logger(var_export($answer, true));

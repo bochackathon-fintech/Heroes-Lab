@@ -47,7 +47,7 @@ return [
         'telegram_token' => env('TELEGRAM_TOKEN'),
         'facebook_token' => env('FACEBOOK_TOKEN'),
         'facebook_app_secret' => env('FACEBOOK_SECRET'),
-        'facebook_start_button_payload' => 'START_CONVERSATION',
+        'facebook_start_button_payload' => 'FIRST_TIME',
         'facebook_persistent_menu' => [
             'persistent_menu' => [
                 [
