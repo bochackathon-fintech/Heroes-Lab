@@ -25,6 +25,14 @@ class BotManController extends Controller
 
             $bot->reply('Hi there :)');
         });
+        $botman->hears('How are you', function (BotMan $bot) {
+
+            $bot->reply('I am fine thanks.You? :)');
+        });
+        $botman->hears('Whats your name?', function (BotMan $bot) {
+
+            $bot->reply('My name is Metis.Nice to meet you!');
+        });
 
         $botman->hears('start|begin', function (BotMan $bot) {
             $bot->startConversation(new StartConversation());
