@@ -132,7 +132,7 @@ class BotManController extends Controller
             "sender" => "https://usdledger.online/ledger/accounts/alice",
             "password" => "alice",
             "receiver" => "bob@usdledger.online",
-            "amount" => "2",
+            "amount" => 2,
             "message" => "payment transfer"
         );
 
