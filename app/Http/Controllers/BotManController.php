@@ -11,7 +11,7 @@ use Mpociot\BotMan\BotMan;
 use Mpociot\BotMan\Button;
 use Mpociot\BotMan\Question;
 
-use App\Http\Controllers\GuzzleHttp\Client;
+use GuzzleHttp;
 
 class BotManController extends Controller
 {
