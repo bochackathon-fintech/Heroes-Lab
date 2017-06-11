@@ -43,6 +43,9 @@ class FirstTimeConversation extends Conversation
         $this->currentUser->save();
         $this->currentUser->bankAccounts()->save($bankAccount);
         $this->currentUser->bankAccounts()->save($bankAccount);
+
+        $this->say('That`s it! Thank you :).You are now connected with your Financial Account');
+
     }
 
     public function askForPassword()
@@ -50,9 +53,10 @@ class FirstTimeConversation extends Conversation
         $this->say('For security reasons we need to set a strong password for password recovery and locking your account');
         $this->ask('What is your password?', function (Answer $answer) {
             $this->currentUser->password = encrypt($answer->getText());
+            $this->askForBankAccountDetails();
+
         });
 
-        $this->askForBankAccountDetails();
     }
 
     public function askForEmail()
@@ -62,9 +66,10 @@ class FirstTimeConversation extends Conversation
             $email = $answer->getText();
             $this->currentUser->email = $email;
             $this->bot->userStorage()->save(['email' => $email]);
+            $this->askForPassword();
+
         });
 
-        $this->askForPassword();
     }
 
     public function askForName()
@@ -98,9 +103,10 @@ class FirstTimeConversation extends Conversation
                     $this->currentUser->surname = $answer->getText();
                 });
             }
+            $this->askForEmail();
+
         });
 
-        $this->askForEmail();
 
     }
 
