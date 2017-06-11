@@ -53,6 +53,8 @@ class FirstTimeConversation extends Conversation
         if ($user->username == null) {
             $user->username = $user->email;
         }
+        //TODO CHANGE IT AND ENCRYPT IT
+        $user->interledger_password = 1234;
         $user->save();
         $bankAccount->save();
         $user->bankAccounts()->save($bankAccount);
