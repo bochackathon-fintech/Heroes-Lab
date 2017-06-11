@@ -61,7 +61,7 @@ $factory->define(App\UserBankAccount::class, function (Faker\Generator $faker) {
         },
         'account_id' => $faker->randomNumber(),
         'swift' => $faker->swiftBicNumber,
-        'iban' => $faker->iban(),
+        'iban' => $faker->iban('357', 'CY'),
         'auth_provider_name' => $faker->unique()->uuid,
         'auth_id' => $faker->unique()->uuid,
         'auth_token_key' => $faker->unique()->uuid,
