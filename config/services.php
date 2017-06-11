@@ -48,33 +48,44 @@ return [
         'facebook_token' => env('FACEBOOK_TOKEN'),
         'facebook_app_secret' => env('FACEBOOK_SECRET'),
         'facebook_start_button_payload' => 'START_CONVERSATION',
-//        'facebook_persistent_menu'      => [
-//            'persistent_menu' => [
-//                [
-//                    'locale'                  => 'default',
-//                    'composer_input_disabled' => 'true',
-//                    'call_to_actions'         => [
-//                        [
-//                            'title'           => 'My Account',
-//                            'type'            => 'nested',
-//                            'call_to_actions' => [
-//                                [
-//                                    'title'   => 'Pay Bill',
-//                                    'type'    => 'postback',
-//                                    'payload' => 'PAYBILL_PAYLOAD',
-//                                ],
-//                            ],
-//                        ],
-//                        [
-//                            'type'                 => 'web_url',
-//                            'title'                => 'Latest News',
-//                            'url'                  => env('APP_URL'),
-//                            'webview_height_ratio' => 'full',
-//                        ],
-//                    ],
-//                ],
-//            ],
-//        ],
+        'facebook_persistent_menu' => [
+            'persistent_menu' => [
+                [
+                    'locale' => 'default',
+                    'composer_input_disabled' => 'false',
+                    'call_to_actions' => [
+                        [
+                            'title' => 'My Account',
+                            'type' => 'nested',
+                            'call_to_actions' => [
+                                [
+                                    'title' => 'Transactions',
+                                    'type' => 'postback',
+                                    'payload' => 'TRANSACTIONS',
+                                ],
+                                [
+                                    'title' => 'AVAILABLE BALANCE',
+                                    'type' => 'postback',
+                                    'payload' => 'BALANCE',
+                                ],
+                                [
+                                    'title' => 'Delete Account',
+                                    'type' => 'postback',
+                                    'payload' => 'DELETE_ACCOUNT',
+                                ],
+
+                            ],
+                        ],
+                        [
+                            'type' => 'web_url',
+                            'title' => 'Website',
+                            'url' => env('APP_URL'),
+                            'webview_height_ratio' => 'full',
+                        ],
+                    ],
+                ],
+            ],
+        ],
     ],
 
 ];
