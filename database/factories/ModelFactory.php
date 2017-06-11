@@ -44,8 +44,8 @@ $factory->define(App\Transaction::class, function (Faker\Generator $faker) {
         'to_user_id' => function () {
             return factory(App\User::class)->create()->id;
         },
-        'amount' => $faker->randomNumber(8),
-        'balance' => $faker->numberBetween(),
+        'amount' => $faker->numberBetween(1, 200),
+        'balance' => $faker->numberBetween(1, 2000),
         'status' => $faker->randomElement(['pending', 'completed']),
         'verification_number' => $faker->uuid,
         'created_at' => $faker->dateTimeThisYear,
