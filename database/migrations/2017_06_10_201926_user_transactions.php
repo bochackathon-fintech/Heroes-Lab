@@ -15,12 +15,10 @@ class UserTransactions extends Migration
     {
         Schema::create('user_transactions', function (Blueprint $table) {
             $table->increments('id');
-            $table->uuid('uuid');
             $table->integer('user_id')->unsigned();
             $table->foreign('user_id')->references('id')->on('users');
             $table->string('category');
-            $table->string('to_user_id')->unsigned();
-            $table->foreign('to_user_id')->references('id')->on('users');
+            $table->string('to_user')->unsigned();
             $table->decimal('amount', 15, 2);
             $table->decimal('balance', 15, 2);
             $table->timestamps();
