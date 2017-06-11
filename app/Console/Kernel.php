@@ -5,6 +5,7 @@ namespace App\Console;
 use App\Console\Commands\BotManListen;
 use App\Console\Commands\FacebookAddPersistentMenu;
 use App\Console\Commands\FacebookAddStartButtonPayload;
+use App\Console\Commands\FacebookDeletePersistentMenu;
 use Illuminate\Console\Scheduling\Schedule;
 use Illuminate\Foundation\Console\Kernel as ConsoleKernel;
 
@@ -19,6 +20,7 @@ class Kernel extends ConsoleKernel
         BotManListen::class,
         FacebookAddStartButtonPayload::class,
         FacebookAddPersistentMenu::class,
+        FacebookDeletePersistentMenu::class
         ];
 
     /**
