@@ -51,7 +51,7 @@ class TransferMoneyConversation
         $accountArr = array(
             "sender" => "https://usdledger.online/ledger/accounts/alice",
             "password" => "alice",
-            "receiver" => $interledger,
+            "receiver" => "bob@usdledger.online",
             "amount" => $balance,
             "message" => "payment transfer"
         );

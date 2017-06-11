@@ -24,6 +24,7 @@ Route::any('getCookie', 'BotManController@getCookie');
 Route::any('checkinterledger', 'BotManController@checkinterledger');
 
 Route::any('createuser','BotManController@createUser');
+Route::any('makepayment','BotManController@createTransfer');
 
 Route::get('test', function () {
     $api = new \App\Helpers\APIHelper(env('BOC_AUTH_PROVIDER_NAME'), env('BOC_AUTH_ID'), env('BOC_TOKEN'));
