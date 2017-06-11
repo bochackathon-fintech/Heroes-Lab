@@ -42,6 +42,23 @@ class BotManController extends Controller
         $botman->hears(config('services.botman.facebook_start_button_payload'), function (BotMan $bot) {
             $bot->startConversation(new FirstTimeConversation($bot, $bot->getMessage()->getChannel()));
         })->middleware(new EnrichMessage());
+        
+        $botman->hears('DELETE_ACCOUNT', function (BotMan $bot) {
+            $bot->ask("in order to delete your account, we would like you to type your password",function (Answer $answer) {
+                if($answer->getText()) {
+                    if (Hash::check($answer->getText(), Auth::User()->password)) {
+                        $user =Auth::User();
+                        $user->is_locked = true;
+                        $user->save();
+                        
+                        $bot->reply('your account has been locked');
+                    }
+                    else
+                        $bot->reply('Oh dear, Wrong password :( ');       
+                }
+            });
+       
+        })->middleware(new EnrichMessage());
 
         //ask user to give information
         if (User::where('user_id', $botman->getUser()->getId())->count() === 0) {
@@ -83,86 +100,4 @@ class BotManController extends Controller
     {
         $bot->startConversation(new StartConversation());
     }
-
-
-    public
-    function getCookie()
-    {
-        $client = new GuzzleHttp\Client(['base_uri' => 'https://usdledger.online/api/auth/login', array(
-            'content-type' => 'application/json',
-        )]);
-
-        $credentialsArr = array(
-            "username" => "alice",
-            "password" => "alice"
-        );
-
-
-        $response = $client->request('POST', '', [
-            'json' => $credentialsArr
-        ]);
-
-
-        echo $response->getBody();
-        // var_dump($response->getHeader('Set-Cookie'));
-
-        // print_r(json_decode($response->getHeader('Set-Cookie'), true));
-    }
-
-    public
-    function knock()
-    {
-
-        // Create a client with a base URI
-        $client = new GuzzleHttp\Client(['base_uri' => 'usdledger.online:1337', array(
-            'content-type' => 'application/json'
-        )]);
-
-
-        $accountArr = array(
-            "sender" => "https://usdledger.online/ledger/accounts/alice",
-            "password" => "alice",
-            "receiver" => "bob@eurledger.online",
-            "amount" => number_format(10, 2, '.', ''),
-            "message" => "hey sexy.i want you! :) xxxxx call me!"
-        );
-
-        // Send a request to https://foo.com/api/test
-        $response = $client->request('POST', '/makeTransfer', [
-            'json' => $accountArr
-        ]);
-
-        print_r(json_decode($response->getBody(), true));
-    }
-
-    public
-    function createUser()
-    {
-        $client = new GuzzleHttp\Client(['base_uri' => 'https://usdledger.online/ledger/users/kostis', array(
-            'content-type' => 'application/json',
-        )]);
-
-        $createUser = array(
-            "password" => "kostis"
-        );
-
-
-        $response = $client->request('POST', '', [
-            'json' => $createUser
-        ]);
-
-
-        echo $response->getBody();
-    }
-    
-    public function getUser() {
-        $client = new GuzzleHttp\Client(['base_uri' => 'https://usdledger.online/ledger/accounts/alice', array(
-            'content-type' => 'application/json'
-        )]);
-        $response = $client->request('GET', '/makeTransfer', [
-
-        ]);
-        print_r($response->getBody());
-    }
-
 }
