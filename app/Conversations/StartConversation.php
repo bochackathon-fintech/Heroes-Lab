@@ -50,11 +50,10 @@ class StartConversation extends Conversation
                     case "transfer":
                         $api = new \App\Helpers\APIHelper(env('BOC_AUTH_PROVIDER_NAME'), env('BOC_AUTH_ID'), env('BOC_TOKEN'));
 
-                        $results = $api->getAccount();
-                        $available_balance = $results['balance']['amount'];
-                        $currency = $results['balance']['currency'];
+                        $available_balance = $api->getAvailableBalance();
+                        $currency = $api->getAvailableBalanceCurrency();
                         
-                        $this->ask('Your available balance is '.$currency.$available_balance . '. How much you would like to transfer?', function (Answer $answer) use ($available_balance, $currency, $question) {
+                        $this->ask('Your available balance is '.$available_balance ." ".$currency.'. How much you would like to transfer?', function (Answer $answer) use ($available_balance, $currency, $question) {
                             $checkbalance = TransferMoneyConversation::checkBalance($answer->getText(), $available_balance);
                             if (!$checkbalance['status']) {
                                 $this->say($checkbalance['message']);
